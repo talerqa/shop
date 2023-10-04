@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import image from './assets/image.png'
 
 
-type CardType = {
+export type CardType = {
   id: number,
   price: number,
   value: string,
@@ -10,37 +10,41 @@ type CardType = {
   img: string,
   count: number
 }
-type CardState = CardType[]
+export type CardState = CardType[]
 
-const initialState: CardState = [{
-  id: 1,
-  price: 10,
-  value: 'руб',
-  title: "Bear",
-  img: image,
-  count: 1,
-}, {
-  id: 2,
-  price: 20,
-  value: 'руб',
-  title: "Lay's",
-  img: image,
-  count: 1,
-}, {
-  id: 3,
-  price: 30,
-  value: 'руб',
-  title: "Coca-Cola",
-  img: image,
-  count: 1,
-}, {
-  id: 4,
-  price: 40,
-  value: 'руб',
-  title: "Snickers",
-  img: image,
-  count: 1,
-},
+const initialState: CardState = [
+  {
+    id: 1,
+    price: 10,
+    value: 'руб',
+    title: "Bear",
+    img: image,
+    count: 1,
+  },
+  {
+    id: 2,
+    price: 20,
+    value: 'руб',
+    title: "Lay's",
+    img: image,
+    count: 1,
+  },
+  {
+    id: 3,
+    price: 30,
+    value: 'руб',
+    title: "Coca-Cola",
+    img: image,
+    count: 1,
+  },
+  {
+    id: 4,
+    price: 40,
+    value: 'руб',
+    title: "Snickers",
+    img: image,
+    count: 1,
+  },
 ]
 
 export const slice = createSlice({
@@ -65,6 +69,5 @@ export const slice = createSlice({
 })
 
 export const cardData = slice.actions
-
 
 export const counterReducer = slice.reducer

@@ -1,10 +1,12 @@
 import './App.css'
 import {useAppDispatch, useAppSelector} from "./hooks.ts";
-import {cardData} from "./itemSlice.ts";
+import {cardData, CardType} from "./itemSlice.ts";
+import {shopCard} from "./shopCartSlice.ts";
 
 
 function App() {
   const {incrementCountCard, decrementCountCard} = cardData
+  const {addCardInShop} = shopCard
   const state = useAppSelector((state) => state.counterReducer)
   const dispatch = useAppDispatch()
 
@@ -16,14 +18,11 @@ function App() {
     dispatch(decrementCountCard({id}))
   }
 
+  const addCardInShopCart = (data: CardType) => {
+    dispatch(addCardInShop(data))
+  }
 
   return (<div>
-
-      <div>
-
-      </div>
-
-
       <div style={{display: 'flex', flexWrap: "wrap"}}>
         {state.map((card, index) => {
           return <div key={index}>
@@ -36,7 +35,17 @@ function App() {
               <p>{card.count}</p>
               <button onClick={() => incrementHandler(card.id)}>+</button>
             </div>
-            <button >add to card
+
+            <button onClick={() => addCardInShopCart(
+              {
+                id: card.id,
+                img: card.img,
+                price: card.price,
+                title: card.title,
+                count: card.count,
+                value: card.value
+              })}>add to
+              card
             </button>
           </div>
         })}
