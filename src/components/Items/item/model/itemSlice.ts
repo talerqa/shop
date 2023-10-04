@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import image from './assets/img/item10.png'
-
+import {stateItems} from "../../../../state.ts";
 
 export type CardType = {
   id: number,
@@ -12,40 +11,7 @@ export type CardType = {
 }
 export type CardState = CardType[]
 
-const initialState: CardState = [
-  {
-    id: 1,
-    price: 10,
-    value: 'руб',
-    title: "Bear",
-    img: image,
-    count: 1,
-  },
-  {
-    id: 2,
-    price: 20,
-    value: 'руб',
-    title: "Lay's",
-    img: image,
-    count: 1,
-  },
-  {
-    id: 3,
-    price: 30,
-    value: 'руб',
-    title: "Coca-Cola",
-    img: image,
-    count: 1,
-  },
-  {
-    id: 4,
-    price: 40,
-    value: 'руб',
-    title: "Snickers",
-    img: image,
-    count: 1,
-  },
-]
+const initialState: CardState = stateItems
 
 export const slice = createSlice({
   name: 'counter',

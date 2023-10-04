@@ -1,8 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {CardType} from "./itemSlice.ts";
+import {CardType} from "../../../Items/item/model/itemSlice.ts";
 
+type InitType = CardType & {total: number}
 
-const initialState: CardType[] = []
+const initialState: InitType[] = []
 
 const slice = createSlice({
   name: 'shopCart',
@@ -14,11 +15,13 @@ const slice = createSlice({
       }
       const newState = [...state];
       newState.push(action.payload)
-      const outputArray: CardType[] = [];
-      newState.forEach((item: CardType) => {
+      const outputArray: InitType[] = [];
+      newState.forEach((item: InitType) => {
         const card = outputArray.find((outputItem: any) => outputItem.id === item.id);
         if (card) {
           card.count += item.count;
+          card.total = Number((card.count * item.price).toFixed(2))
+          debugger
         } else {
           outputArray.push({
             id: item.id,
@@ -26,7 +29,8 @@ const slice = createSlice({
             count: item.count,
             img: item.img,
             value: item.value,
-            price: item.price
+            price: item.price,
+            total: 0
           });
         }
       })
