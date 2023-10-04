@@ -1,23 +1,46 @@
 import './App.css'
 import {useAppDispatch, useAppSelector} from "./hooks.ts";
-import {counterSlice} from "./cardSlice.ts";
+import {cardData} from "./itemSlice.ts";
+
 
 function App() {
-  const count = useAppSelector((state) => state.counterReducer.value)
+  const {incrementCountCard, decrementCountCard} = cardData
+  const state = useAppSelector((state) => state.counterReducer)
   const dispatch = useAppDispatch()
 
-  const {increment, decrement} = counterSlice.actions
+  const incrementHandler = (id: number) => {
+    dispatch(incrementCountCard({id}))
+  }
 
-  const addHandler = () => dispatch(increment())
-  const decHandler = () => dispatch(decrement())
-
-  return (
-    <div>
-      {count}
-      <button onClick={decHandler}>-</button>
-      <button onClick={addHandler}>+</button>
+  const decrementHandler = (id: number) => {
+    dispatch(decrementCountCard({id}))
+  }
 
 
+  return (<div>
+
+      <div>
+
+      </div>
+
+
+      <div style={{display: 'flex', flexWrap: "wrap"}}>
+        {state.map((card, index) => {
+          return <div key={index}>
+            <img src={card.img} alt="image-item"/>
+            <p>{card.price}</p>
+            <span>{card.value}</span>
+            <p>{card.title}</p>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <button onClick={() => decrementHandler(card.id)}>-</button>
+              <p>{card.count}</p>
+              <button onClick={() => incrementHandler(card.id)}>+</button>
+            </div>
+            <button >add to card
+            </button>
+          </div>
+        })}
+      </div>
     </div>
   )
 }
