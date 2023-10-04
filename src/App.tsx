@@ -18,10 +18,12 @@ function App() {
   let totalItemsCostParse = parseFloat((totalItemsCost / 1).toFixed(2));
 
   return (<div>
-      <ShopCart/>
-      <p>{totalItemsCostParse}</p>
-      <hr/>
-      <Items/>
+      <div style={{display: 'flex'}}>
+        <Items/>
+        <hr/>
+        <ShopCart/>
+        <p>TOTAL COST: {totalItemsCostParse}</p>
+      </div>
     </div>
   )
 }

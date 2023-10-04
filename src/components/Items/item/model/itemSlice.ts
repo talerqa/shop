@@ -10,7 +10,6 @@ export type CardType = {
   count: number
 }
 export type CardState = CardType[]
-
 const initialState: CardState = stateItems
 
 export const slice = createSlice({

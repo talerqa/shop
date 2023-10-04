@@ -1,8 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {CardType} from "../../../Items/item/model/itemSlice.ts";
 
-
-
 const initialState: CardType[] = []
 
 const slice = createSlice({
@@ -32,8 +30,26 @@ const slice = createSlice({
         }
       })
       return outputArray
+    },
+    incrementCountCard: (state, action: PayloadAction<{ id: number }>) => {
+      const index = state.findIndex((card) => card.id === action.payload.id)
+      const card = state[index]
+      card.count += 1
+    },
+    decrementCountCard: (state, action: PayloadAction<{ id: number }>) => {
+      const index = state.findIndex((card) => card.id === action.payload.id)
+      const card = state[index]
+      if (card.count > 0) {
+        card.count -= 1
+      } else {
+        card.count = 0
+      }
+    },
+    deleteItemFromCard: (state, action: PayloadAction<any>)=> {
+      const index = state.findIndex((card) => card.id === action.payload.id)
+      if (index !== -1) state.splice(index, 1);
     }
-  }
+  },
 
 })
 

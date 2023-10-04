@@ -9,11 +9,8 @@ const ShopCart = () => {
 
   return (
 
-    <div style={{display: 'flex'}}>{stateShop.map((item: CardType, index) => {
-
-
-      return (<div key={index}>
-
+    <div>{stateShop.map((item: CardType, index) => {
+      return (<div key={index} style={{display: 'flex' , flexDirection: "column", justifyContent: 'flex-start'}}>
         <ItemInShopCart item={item}/>
       </div>)
     })}
