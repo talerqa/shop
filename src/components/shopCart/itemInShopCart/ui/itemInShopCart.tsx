@@ -13,8 +13,21 @@ export const ItemInShopCart: React.FC<Props> = (props) => {
 
   const itemTotalCost = (item.count * item.price).toFixed(2)
 
-  console.log(Number(itemTotalCost) + 10000000)
-  console.log(stateShop)
+  stateShop.reduce((a: any, b: any) => {
+    return a + b
+  }, 0)
+
+  console.log(stateShop.reduce((a: any, b: any, index) => {
+    if (index === 0) {
+      return Number((b.count * b.price).toFixed(2))
+    } else {
+      debugger
+      return Number(a) + Number((b.count * b.price).toFixed(2));
+    }
+  }, 0))
+
+
+
   return (
     <>
       <div>
