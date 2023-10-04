@@ -8,6 +8,9 @@ function App() {
   const {incrementCountCard, decrementCountCard} = cardData
   const {addCardInShop} = shopCard
   const state = useAppSelector((state) => state.counterReducer)
+
+  const stateShop = useAppSelector((state) => state.shopCardReducer)
+
   const dispatch = useAppDispatch()
 
   const incrementHandler = (id: number) => {
@@ -17,12 +20,23 @@ function App() {
   const decrementHandler = (id: number) => {
     dispatch(decrementCountCard({id}))
   }
-
+  console.log(    stateShop  )
   const addCardInShopCart = (data: CardType) => {
     dispatch(addCardInShop(data))
   }
 
   return (<div>
+
+      <div style={{display: 'flex'}}>{stateShop.map((item: CardType, index) => {
+        return <div key={index}>
+          <p>amount count : {item.count}</p>
+          <p>{item.title}</p>
+          <img src={item.img} alt=""/>
+        </div>
+      })}
+      </div>
+
+
       <div style={{display: 'flex', flexWrap: "wrap"}}>
         {state.map((card, index) => {
           return <div key={index}>

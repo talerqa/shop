@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import image from './assets/image.png'
+import image from './assets/img/item10.png'
 
 
 export type CardType = {

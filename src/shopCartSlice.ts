@@ -1,36 +1,39 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {CardState} from "./itemSlice.ts";
+import {CardType} from "./itemSlice.ts";
 
 
-const initialState: CardState = []
+const initialState: CardType[] = []
 
-export const slice = createSlice({
+const slice = createSlice({
   name: 'shopCart',
   initialState,
   reducers: {
     addCardInShop: (state, action: PayloadAction<any>) => {
-      state.push(action.payload)
-      const outputArray: any = [];
-      state.forEach((item: any) => {
-        const existingItem = outputArray.find((outputItem: any) => outputItem.id === item.id && outputItem.title === item.title);
-        if (existingItem) {
-          existingItem.count += item.count;
+      if (action.payload.count === 0) {
+        return
+      }
+      const newState = [...state];
+      newState.push(action.payload)
+      const outputArray: CardType[] = [];
+      newState.forEach((item: CardType) => {
+        const card = outputArray.find((outputItem: any) => outputItem.id === item.id);
+        if (card) {
+          card.count += item.count;
         } else {
-          outputArray.push({ id: item.id, title: item.title, count: item.count });
+          outputArray.push({
+            id: item.id,
+            title: item.title,
+            count: item.count,
+            img: item.img,
+            value: item.value,
+            price: item.price
+          });
         }
-      });
-      state = outputArray
+      })
+      return outputArray
+    }
+  }
 
-      const getCurrentState = (state: any) => {
-        try {
-          return JSON.parse(JSON.stringify(state));
-        } catch (e) {
-          return null;
-        }
-      };
-      console.log(getCurrentState(state))
-    },
-  },
 })
 
 export const shopCard = slice.actions
