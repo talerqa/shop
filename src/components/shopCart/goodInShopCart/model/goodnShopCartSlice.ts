@@ -3,6 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 const initialState = {
   totalCount: 0,
+  totalValue: 'rub',
   totalCost: 0,
 }
 

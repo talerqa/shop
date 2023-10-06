@@ -14,6 +14,8 @@ export const ShopCart = () => {
 
   const totalCost = useAppSelector((state) => state.goodsInShopCartState.totalCost)
 
+  const totalValue = useAppSelector((state) => state.goodsInShopCartState.totalValue)
+
   const dispatch = useAppDispatch()
   let totalItemsCost = stateShop.reduce((a: any, b: any, index) => {
     if (index === 0) {
@@ -23,11 +25,12 @@ export const ShopCart = () => {
     }
   }, 0)
   let totalItemsCostParse = parseFloat((totalItemsCost / 1).toFixed(2));
-  console.log(totalItemsCostParse)
   dispatch(setTotalCost({totalCost: totalItemsCostParse}))
 
   return (<div className={s.shopCart}>
-      <p className={s.totalCostTitle}>TOTAL COST: <span className={s.totalCost}>{totalCost}</span></p>
+      <p className={s.totalCostTitle}>TOTAL COST: <span
+        className={s.totalCost}>{totalCost} {totalValue}</span>
+      </p>
       <div
         className={s.shopCartBlock}>{stateShop.map((item: CardType, index) => {
         return <GoodInShopCart item={item} key={index}/>
