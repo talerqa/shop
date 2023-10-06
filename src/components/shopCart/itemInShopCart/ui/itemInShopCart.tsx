@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardType} from "../../../Items/item/model/itemSlice.ts";
+import {cardData, CardType} from "../../../Items/item/model/itemSlice.ts";
 import {shopCard} from "../model/shopCartSlice.ts";
 import {useAppDispatch} from "../../../../hooks.ts";
 
@@ -11,6 +11,7 @@ type Props = {
 export const ItemInShopCart: React.FC<Props> = (props) => {
   const dispatch = useAppDispatch()
   const {incrementCountCard, decrementCountCard, deleteItemFromCard} = shopCard
+
   const {item} = props
 
   const itemTotalCost = (item.count * item.price).toFixed(2)
@@ -27,6 +28,10 @@ export const ItemInShopCart: React.FC<Props> = (props) => {
     dispatch(deleteItemFromCard({id}))
   }
 
+  if (item.count === 0) {
+    dispatch(deleteItemFromCard({id: item.id}))
+  }
+
   return (
     <>
       <div>
@@ -35,7 +40,8 @@ export const ItemInShopCart: React.FC<Props> = (props) => {
           <p>amount count : {item.count}</p>
           <button onClick={() => incrementHandler(item.id)}>+</button>
         </div>
-        <button onClick={() => deleteHandlerItemFromCart(item.id)}>DELETE</button>
+        <button onClick={() => deleteHandlerItemFromCart(item.id)}>DELETE
+        </button>
         <p>{itemTotalCost}</p>
         <p>{item.title}</p>
         <p>{item.price}</p>

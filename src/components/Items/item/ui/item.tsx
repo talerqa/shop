@@ -7,7 +7,7 @@ type Props = {
   card: CardType
 }
 export const Item: React.FC<Props> = (props) => {
-  const {incrementCountCard, decrementCountCard} = cardData
+  const {incrementCountCard, decrementCountCard,resetDefaultValueItem} = cardData
   const {addCardInShop} = shopCard
 
   const dispatch = useAppDispatch()
@@ -22,6 +22,7 @@ export const Item: React.FC<Props> = (props) => {
 
   const addCardInShopCart = (data: CardType) => {
     dispatch(addCardInShop(data))
+    dispatch(  resetDefaultValueItem({id: data.id}))
   }
   return (
     <>

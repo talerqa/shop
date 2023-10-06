@@ -24,12 +24,17 @@ export const slice = createSlice({
     decrementCountCard: (state, action: PayloadAction<{ id: number }>) => {
       const index = state.findIndex((card) => card.id === action.payload.id)
       const card = state[index]
-      if (card.count > 0) {
+      if (card.count > 1) {
         card.count -= 1
       } else {
-        card.count = 0
+        card.count = 1
       }
     },
+    resetDefaultValueItem: (state, action: PayloadAction<{ id: number }>) => {
+      const index = state.findIndex((card) => card.id === action.payload.id)
+      const card = state[index]
+      card.count = 1
+    }
   },
 })
 
