@@ -7,7 +7,7 @@ import s from './good.module.scss'
 type Props = {
   card: CardType
 }
-export const Good: React.FC<Props> = (props) => {
+export const Good: React.FC<Props> = React.memo((props) => {
   const {
     incrementCountCard,
     decrementCountCard,
@@ -54,5 +54,5 @@ export const Good: React.FC<Props> = (props) => {
       </button>
     </div>
   );
-};
+})
 

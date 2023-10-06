@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks.ts";
 import {
   goodsInShopCart
 } from "../../shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
+import {useEffect} from "react";
 
 export const Menu = () => {
   const state = useAppSelector((state) => state.shopCartReducer)
@@ -12,12 +13,14 @@ export const Menu = () => {
   const {setTotalCount} = goodsInShopCart
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    dispatch(setTotalCount({totalCount: totalCountValue}))
+  }, [])
+
   let totalCountValue: number = 0
   state.forEach(item => {
     totalCountValue += item.count
   })
-
-  dispatch(setTotalCount({totalCount: totalCountValue}))
 
   return (<div className={s.menu}>
     <NavLink to={'goods'} className={s.title}> Товары </NavLink>

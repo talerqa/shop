@@ -6,17 +6,19 @@ import {
 } from "../../goodInShopCart/model/goodnShopCartSlice.ts";
 import {GoodInShopCart} from "../../goodInShopCart/ui/goodInShopCart.tsx";
 import s from './shopCart.module.scss'
+import {useEffect} from "react";
 
 export const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
-
-  const {setTotalCost} = goodsInShopCart
-
   const totalCost = useAppSelector((state) => state.goodsInShopCartState.totalCost)
-
   const totalValue = useAppSelector((state) => state.goodsInShopCartState.totalValue)
-
+  const {setTotalCost} = goodsInShopCart
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(setTotalCost({totalCost: totalItemsCostParse}))
+  }, [])
+
   let totalItemsCost = stateShop.reduce((a: any, b: any, index) => {
     if (index === 0) {
       return parseFloat((b.count * b.price).toFixed(2))
@@ -24,8 +26,8 @@ export const ShopCart = () => {
       return Number(a) + parseFloat((b.count * b.price).toFixed(2));
     }
   }, 0)
+
   let totalItemsCostParse = parseFloat((totalItemsCost / 1).toFixed(2));
-  dispatch(setTotalCost({totalCost: totalItemsCostParse}))
 
   return (<div className={s.shopCart}>
       <p className={s.totalCostTitle}>TOTAL COST: <span
