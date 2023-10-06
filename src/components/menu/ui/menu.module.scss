@@ -1,0 +1,33 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  .title {
+    font-size: 24px;
+    padding: 5px;
+  }
+  .shop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .ellipse {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #747bff;
+      color: white;
+      bottom: -10px;
+      right: 0;
+    }
+  }
+}

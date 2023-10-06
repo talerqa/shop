@@ -5,9 +5,9 @@ import {
   goodsInShopCart
 } from "../../goodInShopCart/model/goodnShopCartSlice.ts";
 import {GoodInShopCart} from "../../goodInShopCart/ui/goodInShopCart.tsx";
+import s from './shopCart.module.scss'
 
-
-const ShopCart = () => {
+export const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
 
   const {setTotalCost} = goodsInShopCart
@@ -26,20 +26,14 @@ const ShopCart = () => {
   console.log(totalItemsCostParse)
   dispatch(setTotalCost({totalCost: totalItemsCostParse}))
 
-  return (<>
-      <p>TOTAL COST: {totalCost}</p>
-      <div>{stateShop.map((item: CardType, index) => {
-        return (<div key={index} style={{
-          display: 'flex',
-          flexDirection: "column",
-          justifyContent: 'flex-start'
-        }}>
-          <GoodInShopCart item={item}/>
-        </div>)
+  return (<div className={s.shopCart}>
+      <p className={s.totalCostTitle}>TOTAL COST: <span className={s.totalCost}>{totalCost}</span></p>
+      <div
+        className={s.shopCartBlock}>{stateShop.map((item: CardType, index) => {
+        return <GoodInShopCart item={item} key={index}/>
       })}
       </div>
-    </>
+    </div>
   );
 };
 
-export default ShopCart;

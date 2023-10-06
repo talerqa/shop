@@ -30,19 +30,19 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
     dispatch(deleteItemFromCard({id: item.id}))
   }
 
-  return (<div>
+  return (<div style={{display: 'flex'}}>
+    <img src={item.img} alt=""/>
     <div style={{display: 'flex'}}>
-      <button onClick={() => decrementHandler(item.id)}>-</button>
-      <p>amount count : {item.count}</p>
-      <button onClick={() => incrementHandler(item.id)}>+</button>
+      <p>{itemTotalCost}</p>
+      <p>{item.title}</p>
+      <p>{item.price}</p>
     </div>
+    <button onClick={() => decrementHandler(item.id)}>-</button>
+    <p>amount count : {item.count}</p>
+    <button onClick={() => incrementHandler(item.id)}>+</button>
     <button onClick={() => deleteHandlerItemFromCart(item.id)}>DELETE
     </button>
-    <p>{itemTotalCost}</p>
-    <p>{item.title}</p>
-    <p>{item.price}</p>
-    <img src={item.img} alt=""/>
   </div>)
-  ;
+    ;
 };
 

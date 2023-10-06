@@ -1,6 +1,6 @@
 import './App.module.scss'
 import {Goods} from "./components/goods/ui/goods.tsx";
-import ShopCart from "./components/shopCart/shopCart/ui/shopCart.tsx";
+import {ShopCart} from "./components/shopCart/shopCart/ui/shopCart.tsx";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Menu} from "./components/menu/ui/menu.tsx";
 import s from './App.module.scss'

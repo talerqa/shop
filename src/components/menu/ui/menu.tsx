@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import {CartShopImg} from "../../../assets/img/ui/cartShopImg.tsx";
-import s from "../../../assets/img/ui/cartShop.module.scss";
+import s from './menu.module.scss';
 import {useAppDispatch, useAppSelector} from "../../../hooks.ts";
 import {
   goodsInShopCart
@@ -20,11 +20,10 @@ export const Menu = () => {
   dispatch(setTotalCount({totalCount: totalCountValue}))
 
   return (<div className={s.menu}>
-    <NavLink to={'goods'}> Товары
-    </NavLink>
-    <NavLink to={'shop-cart'}>
+    <NavLink to={'goods'} className={s.title}> Товары </NavLink>
+    <NavLink to={'shop-cart'} className={s.shop}>
       <CartShopImg/>
-      <span className={s.ellipce}>{totalCount}</span>
+      <span className={s.ellipse}>{totalCount}</span>
     </NavLink>
   </div>);
 };
