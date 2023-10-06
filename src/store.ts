@@ -1,11 +1,17 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {itemReducer} from "./components/Items/item/model/itemSlice.ts";
-import {shopCardReducer} from "./components/shopCart/itemInShopCart/model/shopCartSlice.ts";
+import {
+  shopCartReducer
+} from "./components/shopCart/shopCart/model/shopCartSlice.ts";
+import {
+  dataItemsInCartReducer
+} from "./components/shopCart/itemInShopCart/model/itemInShopCartSlice.ts";
 
 export const store = configureStore({
   reducer: {
-    counterReducer: itemReducer,
-    shopCardReducer,
+    itemReducer,
+    shopCartReducer,
+    dataItemsInCartReducer
   }
 })
 

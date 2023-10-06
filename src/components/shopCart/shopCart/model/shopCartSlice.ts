@@ -7,7 +7,7 @@ const slice = createSlice({
   name: 'shopCart',
   initialState,
   reducers: {
-    addCardInShop: (state, action: PayloadAction<any>) => {
+    addCardInShop: (state, action: PayloadAction<CardType>) => {
       if (action.payload.count === 0) {
         return
       }
@@ -15,7 +15,7 @@ const slice = createSlice({
       newState.push(action.payload)
       const outputArray: CardType[] = [];
       newState.forEach((item: CardType) => {
-        const card = outputArray.find((outputItem: any) => outputItem.id === item.id);
+        const card = outputArray.find(outputItem => outputItem.id === item.id);
         if (card) {
           card.count += item.count;
         } else {
@@ -50,9 +50,8 @@ const slice = createSlice({
       if (index !== -1) state.splice(index, 1);
     }
   },
-
 })
 
-export const shopCard = slice.actions
+export const shopCart = slice.actions
 
-export const shopCardReducer = slice.reducer
+export const shopCartReducer = slice.reducer

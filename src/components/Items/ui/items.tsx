@@ -2,7 +2,7 @@ import {Item} from "../item/ui/item.tsx";
 import {useAppSelector} from "../../../hooks.ts";
 
 const Items = () => {
-  const state = useAppSelector((state) => state.counterReducer)
+  const state = useAppSelector((state) => state.itemReducer)
 
   return (
     <div style={{display: 'flex', flexWrap: "wrap"}}>

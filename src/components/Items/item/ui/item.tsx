@@ -1,14 +1,14 @@
 import React from "react";
 import {itemData, CardType} from "../model/itemSlice.ts";
 import {useAppDispatch} from "../../../../hooks.ts";
-import {shopCard} from "../../../shopCart/itemInShopCart/model/shopCartSlice.ts";
+import {shopCart} from "../../../shopCart/shopCart/model/shopCartSlice.ts";
 
 type Props = {
   card: CardType
 }
 export const Item: React.FC<Props> = (props) => {
   const {incrementCountCard, decrementCountCard,resetDefaultValueItem} = itemData
-  const {addCardInShop} = shopCard
+  const {addCardInShop} = shopCart
 
   const dispatch = useAppDispatch()
   const {card} = props

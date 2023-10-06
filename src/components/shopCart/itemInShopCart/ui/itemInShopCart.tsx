@@ -1,6 +1,6 @@
 import React from 'react';
 import {CardType} from "../../../Items/item/model/itemSlice.ts";
-import {shopCard} from "../model/shopCartSlice.ts";
+import {shopCart} from "../../shopCart/model/shopCartSlice.ts";
 import {useAppDispatch} from "../../../../hooks.ts";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export const ItemInShopCart: React.FC<Props> = (props) => {
   const dispatch = useAppDispatch()
-  const {incrementCountCard, decrementCountCard, deleteItemFromCard} = shopCard
+  const {incrementCountCard, decrementCountCard, deleteItemFromCard} = shopCart
   const {item} = props
 
   const itemTotalCost = (item.count * item.price).toFixed(2)
