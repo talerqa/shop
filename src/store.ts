@@ -1,17 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {counterReducer} from "./components/Items/item/model/itemSlice.ts";
+import {itemReducer} from "./components/Items/item/model/itemSlice.ts";
 import {shopCardReducer} from "./components/shopCart/itemInShopCart/model/shopCartSlice.ts";
-
-
-
 
 export const store = configureStore({
   reducer: {
-    counterReducer,
+    counterReducer: itemReducer,
     shopCardReducer,
   }
 })
-
 
 export type RootState = ReturnType<typeof store.getState>
 

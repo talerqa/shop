@@ -1,5 +1,5 @@
 import React from "react";
-import {cardData, CardType} from "../model/itemSlice.ts";
+import {itemData, CardType} from "../model/itemSlice.ts";
 import {useAppDispatch} from "../../../../hooks.ts";
 import {shopCard} from "../../../shopCart/itemInShopCart/model/shopCartSlice.ts";
 
@@ -7,7 +7,7 @@ type Props = {
   card: CardType
 }
 export const Item: React.FC<Props> = (props) => {
-  const {incrementCountCard, decrementCountCard,resetDefaultValueItem} = cardData
+  const {incrementCountCard, decrementCountCard,resetDefaultValueItem} = itemData
   const {addCardInShop} = shopCard
 
   const dispatch = useAppDispatch()
@@ -24,10 +24,9 @@ export const Item: React.FC<Props> = (props) => {
     dispatch(addCardInShop(data))
     dispatch(  resetDefaultValueItem({id: data.id}))
   }
-  return (
-    <>
+  return (<div style={{border: '1px solid red'}}>
       <img src={card.img} alt="image-item"/>
-      <p>{card.price}</p>
+      <span>{card.price} </span>
       <span>{card.value}</span>
       <p>{card.title}</p>
       <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -46,7 +45,7 @@ export const Item: React.FC<Props> = (props) => {
         })}>add to
         card
       </button>
-    </>
+    </div>
   );
 };
 

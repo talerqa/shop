@@ -7,9 +7,7 @@ const Items = () => {
   return (
     <div style={{display: 'flex', flexWrap: "wrap"}}>
       {state.map((card, index) => {
-        return <div key={index}>
-          <Item card={card}/>
-        </div>
+        return <Item card={card} key={index}/>
       })}
     </div>
   );

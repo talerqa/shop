@@ -38,6 +38,6 @@ export const slice = createSlice({
   },
 })
 
-export const cardData = slice.actions
+export const itemData = slice.actions
 
-export const counterReducer = slice.reducer
+export const itemReducer = slice.reducer
