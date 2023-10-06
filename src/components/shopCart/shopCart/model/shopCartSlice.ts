@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {CardType} from "../../../Items/item/model/itemSlice.ts";
+import {CardType} from "../../../goods/good/model/goodSlice.ts";
 
 const initialState: CardType[] = []
 

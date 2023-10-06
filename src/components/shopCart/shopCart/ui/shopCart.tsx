@@ -1,23 +1,24 @@
-import {CardType} from "../../../Items/item/model/itemSlice.ts";
-import {ItemInShopCart} from "../../itemInShopCart/ui/itemInShopCart.tsx";
+import {CardType} from "../../../goods/good/model/goodSlice.ts";
+
 import {useAppDispatch, useAppSelector} from "../../../../hooks.ts";
 import {
-  dataItemsInCart
-} from "../../itemInShopCart/model/itemInShopCartSlice.ts";
+  goodsInShopCart
+} from "../../goodInShopCart/model/goodnShopCartSlice.ts";
+import {GoodInShopCart} from "../../goodInShopCart/ui/goodInShopCart.tsx";
+
 
 const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
 
-  const {setTotalCost} = dataItemsInCart
+  const {setTotalCost} = goodsInShopCart
 
-  const totalCost = useAppSelector((state)=> state.dataItemsInCartReducer.totalCost)
+  const totalCost = useAppSelector((state) => state.goodsInShopCartState.totalCost)
 
   const dispatch = useAppDispatch()
   let totalItemsCost = stateShop.reduce((a: any, b: any, index) => {
     if (index === 0) {
       return parseFloat((b.count * b.price).toFixed(2))
     } else {
-      console.log(a, b)
       return Number(a) + parseFloat((b.count * b.price).toFixed(2));
     }
   }, 0)
@@ -33,7 +34,7 @@ const ShopCart = () => {
           flexDirection: "column",
           justifyContent: 'flex-start'
         }}>
-          <ItemInShopCart item={item}/>
+          <GoodInShopCart item={item}/>
         </div>)
       })}
       </div>

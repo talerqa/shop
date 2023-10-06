@@ -19,6 +19,6 @@ const slice = createSlice({
   },
 })
 
-export const dataItemsInCart = slice.actions
+export const goodsInShopCart = slice.actions
 
-export const dataItemsInCartReducer = slice.reducer
+export const goodsInShopCartState = slice.reducer

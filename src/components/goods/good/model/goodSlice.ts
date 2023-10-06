@@ -38,6 +38,5 @@ export const slice = createSlice({
   },
 })
 
-export const itemData = slice.actions
-
-export const itemReducer = slice.reducer
+export const goodData = slice.actions
+export const goodState = slice.reducer

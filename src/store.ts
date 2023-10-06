@@ -1,17 +1,18 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {itemReducer} from "./components/Items/item/model/itemSlice.ts";
+import {goodState} from "./components/goods/good/model/goodSlice.ts";
 import {
   shopCartReducer
 } from "./components/shopCart/shopCart/model/shopCartSlice.ts";
 import {
-  dataItemsInCartReducer
-} from "./components/shopCart/itemInShopCart/model/itemInShopCartSlice.ts";
+  goodsInShopCartState
+} from "./components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
+
 
 export const store = configureStore({
   reducer: {
-    itemReducer,
+    goodState,
     shopCartReducer,
-    dataItemsInCartReducer
+    goodsInShopCartState
   }
 })
 
