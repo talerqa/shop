@@ -28,6 +28,7 @@ body {
   place-items: flex-start;
   min-width: 320px;
   min-height: 100vh;
+  background-color: rgba(36, 36, 36, 0.11);
 }
 
 h1 {

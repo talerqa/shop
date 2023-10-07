@@ -2,7 +2,7 @@
   max-width: 320px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 10px;
 
   .priceBlock {
     display: flex;
@@ -31,6 +31,9 @@
 
   .goodImg {
     display: block;
+    background-color: white;
+    border-radius: 6px;
+    padding: 5px;
     margin: 0 auto;
     width: 70%;
     height: auto;

@@ -10,7 +10,6 @@ import {useEffect} from "react";
 
 export const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
-  const totalCost = useAppSelector((state) => state.goodsInShopCartState.totalCost)
   const totalValue = useAppSelector((state) => state.goodsInShopCartState.totalValue)
   const {setTotalCost} = goodsInShopCart
   const dispatch = useAppDispatch()
@@ -31,7 +30,7 @@ export const ShopCart = () => {
 
   return (<div className={s.shopCart}>
       <p className={s.totalCostTitle}>TOTAL COST: <span
-        className={s.totalCost}>{totalCost} {totalValue}</span>
+        className={s.totalCost}>{totalItemsCostParse} {totalValue}</span>
       </p>
       <div
         className={s.shopCartBlock}>{stateShop.map((item: CardType, index) => {

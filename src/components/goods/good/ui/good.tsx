@@ -24,11 +24,11 @@ export const Good: React.FC<Props> = React.memo((props) => {
   const decrementHandler = (id: number) => {
     dispatch(decrementCountCard({id}))
   }
-
   const addCardInShopCart = (data: CardType) => {
     dispatch(addCardInShop(data))
     dispatch(resetDefaultValueItem({id: data.id}))
   }
+
   return (<div className={s.good}>
       <img src={card.img} className={s.goodImg} alt="image-item"/>
       <p className={s.titleGood}>{card.title}</p>

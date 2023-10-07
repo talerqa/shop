@@ -9,18 +9,19 @@ import {useEffect} from "react";
 
 export const Menu = () => {
   const state = useAppSelector((state) => state.shopCartReducer)
-  const totalCount = useAppSelector((state) => state.goodsInShopCartState.totalCount)
+  const totalCount = useAppSelector((state) =>
+    state.goodsInShopCartState.totalCount)
   const {setTotalCount} = goodsInShopCart
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(setTotalCount({totalCount: totalCountValue}))
-  }, [])
 
   let totalCountValue: number = 0
   state.forEach(item => {
     totalCountValue += item.count
   })
+
+  useEffect(() => {
+    dispatch(setTotalCount({totalCount: totalCountValue}))
+  }, [totalCountValue])
 
   return (<div className={s.menu}>
     <NavLink to={'goods'} className={s.title}> Товары </NavLink>
