@@ -24,7 +24,7 @@ export const Menu = () => {
   }, [totalCountValue])
 
   return (<div className={s.menu}>
-    <NavLink to={'goods'} className={s.title}> Товары </NavLink>
+    <NavLink to={'goods'} className={s.title}> Orders </NavLink>
     <NavLink to={'shop-cart'} className={s.shop}>
       <CartShopImg/>
       <span className={s.ellipse}>{totalCount}</span>
