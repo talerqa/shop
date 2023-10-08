@@ -4,9 +4,10 @@ import {ShopCart} from "./components/shopCart/shopCart/ui/shopCart.tsx";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Menu} from "./components/menu/ui/menu.tsx";
 import s from './App.module.scss'
+import {ErrorPage} from "./components/error/errorPage/ErrorPage.tsx";
 
 function App() {
-  return (<div className={s.app} >
+  return (<div className={s.app}>
       <Menu/>
       <div className={s.appBlock}>
         <Routes>
@@ -14,7 +15,7 @@ function App() {
           <Route path={'goods'} element={<Goods/>}/>
           <Route path={'shop-cart'} element={<ShopCart/>}/>
           <Route path={'*'} element={<Navigate to={'error'}/>}/>
-          <Route path={'error'} element={<div>ERRRORPORR</div>}/>
+          <Route path={'error'} element={<ErrorPage/>}/>
         </Routes>
       </div>
     </div>
