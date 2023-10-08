@@ -3,6 +3,8 @@ import {CardType, goodData} from "../model/goodSlice.ts";
 import {useAppDispatch} from "../../../../hooks.ts";
 import {shopCart} from "../../../shopCart/shopCart/model/shopCartSlice.ts";
 import s from './good.module.scss'
+import {z, ZodError} from 'zod';
+
 
 type Props = {
   card: CardType
@@ -21,9 +23,34 @@ export const Good: React.FC<Props> = React.memo(props => {
 
   const [count, setCount] = useState<number>(card.count)
 
+  if (count > 99) {
+    setCount(99)
+  }
+
+
+  const numberStringSchema = z.string().refine((value) => /^[0-9]*$/.test(value), {
+    message: 'The value must consist of numbers only',
+  });
+
   const onChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
-    setCount(Number(e.currentTarget.value))
-    dispatch(setCountCard({id, value: Number(e.currentTarget.value)}))
+
+    try {
+      numberStringSchema.parse(e.currentTarget.value);
+      setCount(Number(e.currentTarget.value));
+      dispatch(setCountCard({id, value: Number(e.currentTarget.value)}))
+    } catch (error) {
+      const customError = error as ZodError
+      console.log(customError.issues[0].message)
+    }
+
+    // const value = e.currentTarget.value;
+    // if (/^[0-9]*$/.test(value)) {
+    //   setCount(Number(value));
+    //   dispatch(setCountCard({id, value: Number(value)}))
+    // } else {
+    //   console.log(1231213)
+    //   ///errrorrr
+    // }
   }
 
   const incrementHandler = (id: number) => {
