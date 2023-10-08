@@ -1,44 +1,37 @@
-name: pnpm Example Workflow
+name: Deploy to GitHub Pages
+
 on:
-  push: 
-  branches: [ master]
+  push:
+    branches:
+      - main
 
- permissions:
-   contents: read
-   pages: write
-   id-token: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
- jobs:
-   build:
-    environment:
-    name: github-pages
-  url: ${{steps.deployment.outputs.page_url}}
-runs-on: ubuntu-latest
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.2
 
-strategy:
-  matrix:
-    node-version: [18]
-steps:
-  - uses: actions/checkout@v3
-  - uses: pnpm/action-setup@v2
-    with:
-      version: 7
-  - name: Use Node.js ${{ matrix.node-version }}
-    uses: actions/setup-node@v3
-    with:
-      node-version: ${{ matrix.node-version }}
-      cache: pnpm
-  - name: Install dependencies
-    run: pnpm install
-  - name: Build
-    run: pnpm run build
-  - name: Setup Pages
-    uses: actions/configure-pages@v3
-  - name: Upload artifact
-    uses: actions/upload-pages-artifact@v1
-    with:
-      # Upload dist repository
-       path: ./dist
-  - name: Deploy to GitHub Pages
-    id: deployment
-    uses: actions/deploy-pages@v1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: apps/web/build
