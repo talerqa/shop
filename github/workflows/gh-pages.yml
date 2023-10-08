@@ -1,14 +1,14 @@
-name: Deploy to GitHub Pages
+name: deploy
 
 on:
-  push:
+ push:
     branches:
       - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
       - name: Check out code
         uses: actions/checkout@v3
         with:
@@ -34,4 +34,13 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: apps/web/build
+          github_token: ${{ github.token }}
+          folder: ./dist
+
+      - name: Merge dev -> gh-pages 🚀
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: main
+          target_branch: gh-pages
+          github_token: ${{ github.token }}
