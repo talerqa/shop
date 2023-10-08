@@ -42,15 +42,6 @@ export const Good: React.FC<Props> = React.memo(props => {
       const customError = error as ZodError
       console.log(customError.issues[0].message)
     }
-
-    // const value = e.currentTarget.value;
-    // if (/^[0-9]*$/.test(value)) {
-    //   setCount(Number(value));
-    //   dispatch(setCountCard({id, value: Number(value)}))
-    // } else {
-    //   console.log(1231213)
-    //   ///errrorrr
-    // }
   }
 
   const incrementHandler = (id: number) => {
