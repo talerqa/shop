@@ -6,8 +6,9 @@ import s from './good.module.scss'
 
 type Props = {
   card: CardType
+  showModalHandler: any
 }
-export const Good: React.FC<Props> = React.memo((props) => {
+export const Good: React.FC<Props> = React.memo(props => {
   const {
     incrementCountCard,
     decrementCountCard,
@@ -16,7 +17,8 @@ export const Good: React.FC<Props> = React.memo((props) => {
   const {addCardInShop} = shopCart
 
   const dispatch = useAppDispatch()
-  const {card} = props
+  const {card, showModalHandler} = props
+
   const incrementHandler = (id: number) => {
     dispatch(incrementCountCard({id}))
   }
@@ -27,6 +29,7 @@ export const Good: React.FC<Props> = React.memo((props) => {
   const addCardInShopCart = (data: CardType) => {
     dispatch(addCardInShop(data))
     dispatch(resetDefaultValueItem({id: data.id}))
+    showModalHandler(true)
   }
 
   return (<div className={s.good}>
@@ -37,9 +40,13 @@ export const Good: React.FC<Props> = React.memo((props) => {
         <p className={s.value}>{card.value}</p>
       </div>
       <div className={s.buttonsCount}>
-        <button  className={s.buttonCount} onClick={() => decrementHandler(card.id)}>-</button>
+        <button className={s.buttonCount}
+                onClick={() => decrementHandler(card.id)}>-
+        </button>
         <p className={s.count}>{card.count}</p>
-        <button className={s.buttonCount} onClick={() => incrementHandler(card.id)}>+</button>
+        <button className={s.buttonCount}
+                onClick={() => incrementHandler(card.id)}>+
+        </button>
       </div>
       <button className={s.buttonAddGood} onClick={() => addCardInShopCart(
         {
@@ -49,8 +56,7 @@ export const Good: React.FC<Props> = React.memo((props) => {
           title: card.title,
           count: card.count,
           value: card.value
-        })}>add to
-        card
+        })}>Add to cart
       </button>
     </div>
   );

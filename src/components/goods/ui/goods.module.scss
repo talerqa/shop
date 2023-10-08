@@ -3,4 +3,27 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+
+  .modalNotification {
+    margin: 0 auto;
+    display: flex;
+    position: fixed;
+
+    max-width: 150px;
+
+    border: 1px solid #535bf2;
+    color: #ffffff;
+    background-color: rgba(83, 91, 242, 0.45);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    top: 85%;
+    transform: translate(0, -50%)
+  }
+
+  .modalText {
+    padding: 15px 20px;
+
+  }
 }
