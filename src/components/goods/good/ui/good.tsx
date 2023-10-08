@@ -32,6 +32,10 @@ export const Good: React.FC<Props> = React.memo(props => {
     showModalHandler(true)
   }
 
+  const resetDefaultValue = (id: number) => {
+    dispatch(resetDefaultValueItem({id}))
+  }
+
   return (<div className={s.good}>
       <img src={card.img} className={s.goodImg} alt="image-item"/>
       <p className={s.titleGood}>{card.title}</p>
@@ -48,6 +52,8 @@ export const Good: React.FC<Props> = React.memo(props => {
                 onClick={() => incrementHandler(card.id)}>+
         </button>
       </div>
+      <button type='reset' onClick={() => resetDefaultValue(card.id)} className={s.resetCount}>reset
+      </button>
       <button className={s.buttonAddGood} onClick={() => addCardInShopCart(
         {
           id: card.id,

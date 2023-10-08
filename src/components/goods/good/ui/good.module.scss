@@ -47,6 +47,10 @@
     .count {
       margin: 0;
       padding: 5px;
+
+
+        font-weight: 700;
+
     }
 
     .buttonCount {
@@ -56,8 +60,16 @@
     }
   }
 
+  .resetCount {
+    font-size: 12px;
+    padding: 2px 8px;
+    margin: 5px auto 0;
+    max-width: 160px;
+
+  }
+
   .buttonAddGood {
-    margin: 10px auto;
+    margin: 5px auto 0;
     max-width: 160px;
     min-height: 40px;
   }
