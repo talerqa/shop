@@ -14,7 +14,6 @@ export const Goods = () => {
       return () => clearTimeout(timeoutID)
     }, [showModal])
 
-
     const showModalHandler = (showModal: boolean) => {
       setModal(showModal)
     }

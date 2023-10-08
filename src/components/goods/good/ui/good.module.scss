@@ -24,15 +24,16 @@
   .titleGood {
     font-size: 18px;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 5px;
     text-align: center;
     font-weight: 600;
+    word-break: break-word;
   }
 
   .goodImg {
     display: block;
     background-color: white;
-    border-radius: 6px;
+    border-radius: 15px;
     padding: 5px;
     margin: 0 auto;
     width: 70%;
@@ -45,12 +46,9 @@
     align-items: center;
 
     .count {
-      margin: 0;
+      margin: 0 5px;
       padding: 5px;
-
-
-        font-weight: 700;
-
+      font-weight: 700;
     }
 
     .buttonCount {
