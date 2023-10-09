@@ -7,6 +7,7 @@ export const Goods = () => {
     const state = useAppSelector((state) => state.goodState)
     const [showModal, setModal] = useState<boolean>(false)
 
+
     useEffect(() => {
       let timeoutID = setTimeout(() => {
         showModalHandler(false)

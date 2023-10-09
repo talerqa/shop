@@ -4,8 +4,18 @@ import {Menu} from "./components/menu/ui/menu.tsx";
 import s from './App.module.scss'
 import {ErrorPage} from "./components/error/errorPage/ErrorPage.tsx";
 import {Goods} from "./components/goods/ui/goods.tsx";
+import {useEffect} from "react";
+import {goodThunk} from "./components/goods/good/model/goodSlice.ts";
+import {useAppDispatch} from "./hooks.ts";
 
 function App() {
+  const dispatch = useAppDispatch()
+  const {getGood} = goodThunk
+
+  useEffect(() => {
+    dispatch(getGood({}))
+  }, [])
+
   return (<div className={s.app}>
       <Menu/>
       <div className={s.appBlock}>
