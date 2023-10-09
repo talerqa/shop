@@ -4,5 +4,6 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm i",
   "framework": null,
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+ "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
