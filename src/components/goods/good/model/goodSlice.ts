@@ -13,8 +13,8 @@ export type CardType = {
   count: number
 }
 export type CardState = CardType[]
- const initialState: CardState = [...stateItems]
- //const initialState: CardState = []
+const initialState: CardState = [...stateItems]
+//const initialState: CardState = []
 
 export const slice = createSlice({
   name: 'counter',
@@ -54,11 +54,12 @@ export const slice = createSlice({
       card.count = 1
     }
   },
-  extraReducers: builder =>{
+  extraReducers: builder => {
     builder
-      .addCase(getGood.fulfilled, (state, action) => {
+      .addCase(getGood.fulfilled, (_: any, action) => {
         return action.payload.goods
-      })}
+      })
+  }
 })
 
 export const createAppAsyncThunk = createAsyncThunk.withTypes<{
@@ -69,7 +70,7 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 
 export const getGood = createAppAsyncThunk<any, any>('getGoods/fetchGood',
   async () => {
-  let array: any = []
+    let array: any = []
 
     await getDocs(colRef)
       .then((res) => {
