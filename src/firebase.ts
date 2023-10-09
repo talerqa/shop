@@ -1,5 +1,6 @@
-import {initializeApp} from "firebase/app";
+import {initializeApp,} from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
+import {getStorage, ref} from "firebase/storage";
 
 
 const firebaseConfig = {
@@ -27,4 +28,7 @@ export const stateItems = getDocs(colRef)
     return err.message
   })
 console.log(stateItems.then((res) => res))
+let stor = getStorage()
+export const image = ref(stor, 'collection/item1.png.webp')
 
+console.log(image)
