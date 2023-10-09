@@ -1,10 +1,9 @@
-import './App.module.scss'
-import {Goods} from "./components/goods/ui/goods.tsx";
 import {ShopCart} from "./components/shopCart/shopCart/ui/shopCart.tsx";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Menu} from "./components/menu/ui/menu.tsx";
 import s from './App.module.scss'
 import {ErrorPage} from "./components/error/errorPage/ErrorPage.tsx";
+import {Goods} from "./components/goods/ui/goods.tsx";
 
 function App() {
   return (<div className={s.app}>
