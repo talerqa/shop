@@ -1,7 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {stateItems} from "../../../../state.ts";
-
-import image1 from "./../../../../assets/img/item1.png.webp";
 import {getDocs} from "firebase/firestore";
 import {colRef} from "../../../../firebase.ts";
 import {AppDispatch, RootState} from "../../../../store.ts";
@@ -59,9 +57,6 @@ export const slice = createSlice({
   extraReducers: builder =>{
     builder
       .addCase(getGood.fulfilled, (state, action) => {
-        let a = state
-        console.log(a)
-
         return action.payload.goods
       })}
 })
@@ -73,7 +68,7 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 }>();
 
 export const getGood = createAppAsyncThunk<any, any>('getGoods/fetchGood',
-  async (state, thunkAPI) => {
+  async () => {
   let array: any = []
 
     await getDocs(colRef)

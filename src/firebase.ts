@@ -1,5 +1,4 @@
 import {initializeApp} from "firebase/app";
-import {getAnalytics} from "firebase/analytics"
 import {collection, getDocs, getFirestore} from "firebase/firestore";
 
 
@@ -13,9 +12,7 @@ const firebaseConfig = {
   measurementId: "G-4KFVLNF2KC"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-const db = getFirestore()
+const db = getFirestore(app)
 
 export const colRef = collection(db, 'shop')
 let shop: any = []
