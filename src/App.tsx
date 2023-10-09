@@ -7,7 +7,6 @@ import {Goods} from "./components/goods/ui/goods.tsx";
 import {useEffect} from "react";
 import {goodThunk} from "./components/goods/good/model/goodSlice.ts";
 import {useAppDispatch} from "./hooks.ts";
-import {image} from "./firebase.ts";
 
 function App() {
   const dispatch = useAppDispatch()
@@ -18,7 +17,6 @@ function App() {
   }, [])
 
   return (<div className={s.app}>
-      <img src={image.fullPath} alt=""/>
       <Menu/>
       <div className={s.appBlock}>
         <Routes>

@@ -69,7 +69,8 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 }>();
 
 export const getGood = createAppAsyncThunk<any, any>('getGoods/fetchGood',
-  async () => {
+  async (arg, thunkAPI) => {
+
     let array: any = []
 
     await getDocs(colRef)
@@ -77,7 +78,6 @@ export const getGood = createAppAsyncThunk<any, any>('getGoods/fetchGood',
         res.docs.forEach((doc) => {
           array.push({...doc.data(), id: doc.id})
         })
-
         return array
       }).catch((err) => {
         return err.message

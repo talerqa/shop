@@ -6,13 +6,15 @@ import {
 import {
   goodsInShopCartState
 } from "./components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
+import {appReducer} from "./components/app/model/appSlice.ts";
 
 
 export const store = configureStore({
   reducer: {
     goodState,
     shopCartReducer,
-    goodsInShopCartState
+    goodsInShopCartState,
+    appReducer
   }
 })
 
