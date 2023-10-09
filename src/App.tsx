@@ -17,16 +17,18 @@ function App() {
   }, [])
 
   return (<div className={s.app}>
-      <Menu/>
-      <div className={s.appBlock}>
-        <Routes>
-          <Route path={'/'} element={<Navigate to={'goods'}/>}/>
-          <Route path={'goods'} element={<Goods/>}/>
-          <Route path={'shop-cart'} element={<ShopCart/>}/>
-          <Route path={'*'} element={<Navigate to={'error'}/>}/>
-          <Route path={'error'} element={<ErrorPage/>}/>
-        </Routes>
-      </div>
+<div className={s.container}>
+  <Menu/>
+  <div className={s.appBlock}>
+    <Routes>
+      <Route path={'/'} element={<Navigate to={'goods'}/>}/>
+      <Route path={'goods'} element={<Goods/>}/>
+      <Route path={'shop-cart'} element={<ShopCart/>}/>
+      <Route path={'*'} element={<Navigate to={'error'}/>}/>
+      <Route path={'error'} element={<ErrorPage/>}/>
+    </Routes>
+  </div>
+</div>
     </div>
   )
 }

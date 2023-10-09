@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-
 import {getDocs} from "firebase/firestore";
 import {colRef} from "../../../../firebase.ts";
 import {AppDispatch, RootState} from "../../../../store.ts";
+import {appAction} from "../../../app/model/appSlice.ts";
 
 export type CardType = {
   id: number,
@@ -12,9 +12,8 @@ export type CardType = {
   img: string,
   count: number
 }
-export type CardState = CardType[]
-//const initialState: CardState = [...stateItems]
-const initialState: CardState = []
+export type CardStateType = CardType[]
+const initialState: CardStateType = []
 
 export const slice = createSlice({
   name: 'counter',
@@ -56,7 +55,9 @@ export const slice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(getGood.fulfilled, (_: any, action) => {
+      .addCase(getGood.fulfilled, (_: any, action: PayloadAction<{
+        goods: CardType[]
+      }>) => {
         return action.payload.goods
       })
   }
@@ -65,24 +66,28 @@ export const slice = createSlice({
 export const createAppAsyncThunk = createAsyncThunk.withTypes<{
   state: RootState;
   dispatch: AppDispatch;
-  rejectValue: null | any;
+  rejectValue: any;
 }>();
 
-export const getGood = createAppAsyncThunk<any, any>('getGoods/fetchGood',
-  async (arg, thunkAPI) => {
-
-    let array: any = []
-
-    await getDocs(colRef)
-      .then((res) => {
+export const getGood = createAppAsyncThunk<{
+  goods: CardStateType
+}, {}>('getGoods/fetchGood',
+  async (_, thunkAPI) => {
+    const {dispatch, rejectWithValue} = thunkAPI
+    try {
+      let array: any = []
+      await getDocs(colRef).then((res) => {
         res.docs.forEach((doc) => {
           array.push({...doc.data(), id: doc.id})
         })
-        return array
       }).catch((err) => {
+        dispatch(appAction.setError(err.message))
         return err.message
       })
-    return {goods: array[0].shopItems}
+      return {goods: array[0].shopItems}
+    } catch (e) {
+      return rejectWithValue(null)
+    }
   }
 )
 

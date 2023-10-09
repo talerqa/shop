@@ -8,7 +8,6 @@ export const Goods = () => {
     const state = useAppSelector((state) => state.goodState)
     const [showModal, setModal] = useState<boolean>(false)
 
-
     useEffect(() => {
       let timeoutID = setTimeout(() => {
         showModalHandler(false)
@@ -19,17 +18,17 @@ export const Goods = () => {
     const showModalHandler = (showModal: boolean) => {
       setModal(showModal)
     }
-  const status = useAppSelector(state => state.appReducer.status)
+    const status = useAppSelector(state => state.appReducer.status)
 
     return (<div className={s.goods}>
-        {status === 'loading' && <div>< Preloader/></div>      }
+        {status === 'loading' && <div className={s.goodsPreloader}>< Preloader/></div>}
         {state.map((card, index) => {
           return <Good card={card} key={index}
                        showModalHandler={showModalHandler}/>
         })}
-        {showModal &&
-            <div className={s.modalNotification}><span className={s.modalText}>Add to cart</span>
-            </div>}
+        {showModal && <div className={s.modalNotification}>
+            <span className={s.modalText}>Add to cart</span>
+        </div>}
       </div>
     );
   }

@@ -17,18 +17,22 @@ const initialState: InitialStateType = {
  const slice = createSlice({
   name: 'counter',
   initialState,
-  reducers: {},
+  reducers: {
+    setError: (state, action)=> {
+      state.error = action.payload.error
+    }
+  },
   extraReducers: builder => {
     builder
-      .addCase(goodThunk.getGood.pending, (state, _)=> {
+      .addCase(goodThunk.getGood.pending, (state)=> {
         state.status = 'loading'
         return
       })
-      .addCase(goodThunk.getGood.fulfilled, (state, _)=> {
+      .addCase(goodThunk.getGood.fulfilled, (state)=> {
         state.status = 'succeeded'
         return
       })
-      .addCase(goodThunk.getGood.rejected, (state, _)=> {
+      .addCase(goodThunk.getGood.rejected, (state)=> {
         state.status = 'failed'
         return
       })
