@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {stateItems} from "../../../../state.ts";
+
 import {getDocs} from "firebase/firestore";
 import {colRef} from "../../../../firebase.ts";
 import {AppDispatch, RootState} from "../../../../store.ts";
@@ -13,8 +13,8 @@ export type CardType = {
   count: number
 }
 export type CardState = CardType[]
-const initialState: CardState = [...stateItems]
-//const initialState: CardState = []
+//const initialState: CardState = [...stateItems]
+const initialState: CardState = []
 
 export const slice = createSlice({
   name: 'counter',
