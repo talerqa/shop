@@ -48,11 +48,15 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
     </button>
     <img className={s.img} src={item.img} alt=""/>
     <p className={s.title}> {item.title}</p>
-    <p className={s.price}>{item.price} <span>{item.value}</span></p>
+    <p className={s.price}> {item.price} <span>{item.value}</span></p>
     <div className={s.countBlock}>
-      <button onClick={() => decrementHandler(item.id)} className={s.buttonInc}>-</button>
+      <button onClick={() => decrementHandler(item.id)}
+              className={s.buttonInc}>-
+      </button>
       <p className={s.count}> {item.count}</p>
-      <button onClick={() => incrementHandler(item.id)} className={s.buttonDec}>+</button>
+      <button onClick={() => incrementHandler(item.id)}
+              className={s.buttonDec}>+
+      </button>
     </div>
 
   </div>)

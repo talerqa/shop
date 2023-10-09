@@ -45,9 +45,12 @@ const slice = createSlice({
         card.count = 0
       }
     },
-    deleteItemFromCard: (state, action: PayloadAction<any>)=> {
+    deleteItemFromCard: (state, action: PayloadAction<{ id: number }>) => {
       const index = state.findIndex((card) => card.id === action.payload.id)
       if (index !== -1) state.splice(index, 1);
+    },
+    deleteAllItemsFromCart: () => {
+      return []
     }
   },
 })
