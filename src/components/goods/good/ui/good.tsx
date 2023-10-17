@@ -15,6 +15,8 @@ export const Good: React.FC<Props> = React.memo(props => {
   return (<div className={s.good}>
       <img src={card.img} className={s.goodImg} alt="image-item"/>
       <NavLink to={`${card.id}`} className={s.titleGood}>{card.title}</NavLink>
+
+
       <div className={s.priceBlock}>
         <p className={s.price}>{card.price} </p>
         <p className={s.value}>{card.value}</p>

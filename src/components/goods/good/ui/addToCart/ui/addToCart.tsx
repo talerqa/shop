@@ -33,7 +33,6 @@ export const AddToCart = (props: {
     message: 'The value must consist of numbers only',
   });
 
-
   const onChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
     try {
       numberStringSchema.parse(e.currentTarget.value);
@@ -67,7 +66,6 @@ export const AddToCart = (props: {
     setCount(1)
     dispatch(resetDefaultValueItem({id}))
   }
-
 
   return (<>
     <div className={s.buttonsCount}>

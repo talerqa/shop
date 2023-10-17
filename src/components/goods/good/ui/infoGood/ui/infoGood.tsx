@@ -5,6 +5,7 @@ import {infoGoodThunk} from "../model/infoGoodSlice.ts";
 import {CardType} from "../../../model/goodSlice.ts";
 import s from './infoGood.module.scss'
 import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
+import {usehook} from "../../../../ui/goods.tsx";
 
 export const InfoGood = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -19,6 +20,8 @@ export const InfoGood = (): JSX.Element => {
       dispatch(infoGoodSlice({id: a![0].params.id}))
     }
   }, [])
+
+  const {showModalHandler} = usehook()
 
   const good = useAppSelector(state => state.infoGoodState)
   const routes = [{path: "/goods/:id"}]
@@ -36,7 +39,7 @@ export const InfoGood = (): JSX.Element => {
               <span className={s.value}>{item.value}</span>
             </div>
             <p>{item.description}</p>
-            <AddToCart card={item}/>
+            <AddToCart card={item} showModalHandler={showModalHandler}/>
           </div>
         </div>
       })}

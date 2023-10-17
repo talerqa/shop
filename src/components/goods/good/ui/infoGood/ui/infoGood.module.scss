@@ -1,6 +1,7 @@
 .infoGood {
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: wrap;
   padding: 10px;
 
@@ -41,10 +42,7 @@
         font-weight: 700;
       }
     }
-
-
   }
-
 
 
 
@@ -83,6 +81,4 @@
     max-width: 160px;
     min-height: 40px;
   }
-
-
 }

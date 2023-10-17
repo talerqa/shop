@@ -6,22 +6,16 @@ import {Preloader} from "../../common/preloader.tsx";
 
 export const Goods = () => {
     const state = useAppSelector((state) => state.goodState)
-    const [showModal, setModal] = useState<boolean>(false)
 
-    useEffect(() => {
-      let timeoutID = setTimeout(() => {
-        showModalHandler(false)
-      }, 1500)
-      return () => clearTimeout(timeoutID)
-    }, [showModal])
 
-    const showModalHandler = (showModal: boolean) => {
-      setModal(showModal)
-    }
+    const {showModal, showModalHandler} = usehook()
+
+
     const status = useAppSelector(state => state.appReducer.status)
 
     return (<div className={s.goods}>
-        {status === 'loading' && <div className={s.goodsPreloader}>< Preloader/></div>}
+        {status === 'loading' &&
+            <div className={s.goodsPreloader}>< Preloader/></div>}
         {state.map((card, index) => {
           return <Good card={card} key={index}
                        showModalHandler={showModalHandler}/>
@@ -33,4 +27,22 @@ export const Goods = () => {
     );
   }
 ;
+
+
+export const usehook = () => {
+  const [showModal, setModal] = useState<boolean>(false)
+
+  useEffect(() => {
+    let timeoutID = setTimeout(() => {
+      showModalHandler(false)
+    }, 1500)
+    return () => clearTimeout(timeoutID)
+  }, [showModal])
+
+  const showModalHandler = (showModal: boolean) => {
+    setModal(showModal)
+  }
+
+  return {showModal, showModalHandler}
+}
 
