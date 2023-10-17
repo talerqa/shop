@@ -13,7 +13,6 @@ export const slice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(infoGoodSlice.fulfilled, (_: any, action: PayloadAction<any>) => {
-        debugger
         return action.payload.good
       })
   }

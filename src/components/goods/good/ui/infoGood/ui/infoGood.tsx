@@ -1,20 +1,24 @@
 import {useEffect} from "react";
-import {matchRoutes, useLocation} from "react-router-dom";
+import {matchRoutes, useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../../../hooks.ts";
 import {infoGoodThunk} from "../model/infoGoodSlice.ts";
 
-export const InfoGood = () => {
+export const InfoGood = (): JSX.Element => {
+
   const dispatch = useAppDispatch()
   const {infoGoodSlice} = infoGoodThunk
-
+  const navigate = useNavigate()
   useEffect(() => {
-    dispatch(infoGoodSlice({id: a![0].params.id}))
+    if (!Number(a![0].params.id)) {
+      debugger
+      navigate('/goods')
+    } else if (Number(a![0].params.id)) {
+      dispatch(infoGoodSlice({id: a![0].params.id}))
+    }
   }, [])
   const state = useAppSelector(state => state.infoGoodState)
-
   const routes = [{path: "/goods/:id"}]
   const location = useLocation();
-
   const a = matchRoutes(routes, location)
 
   return (<div>
