@@ -4,20 +4,34 @@ import {getDocs} from "firebase/firestore";
 import {colRef} from "../../../../../../firebase.ts";
 import {appAction} from "../../../../../app/model/appSlice.ts";
 
-const initialState: CardType[] = []
-console.log(initialState)
+type RequestState = 'pending' | 'fulfilled' | 'rejected'
+
+
+const initialState: any = {
+  infoGoods: [] as CardType[],
+  status: '' as  RequestState,
+}
+
 export const slice = createSlice({
   name: 'infoGood',
   initialState,
   reducers: {
-    clearData: ()=> {
-      return []
+    clearData: (state)=> {
+      state.infoGoods = []
     }
   },
   extraReducers: builder => {
     builder
-      .addCase(infoGoodSlice.fulfilled, (_: any, action: PayloadAction<any>) => {
-        return action.payload.good
+      .addCase(infoGoodSlice.pending, (state: any) => {
+        state.status = 'pending'
+      })
+      .addCase(infoGoodSlice.fulfilled, (state: any, action: PayloadAction<any>) => {
+        state.status = 'fulfilled'
+        state.infoGoods = action.payload.good
+      })
+      .addCase(infoGoodSlice.rejected, (state: any) => {
+        state.status = 'rejected'
+
       })
   }
 })

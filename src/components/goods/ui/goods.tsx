@@ -7,9 +7,7 @@ import {Preloader} from "../../common/preloader.tsx";
 export const Goods = () => {
     const state = useAppSelector((state) => state.goodState)
 
-
     const {showModal, showModalHandler} = usehook()
-
 
     const status = useAppSelector(state => state.appReducer.status)
 

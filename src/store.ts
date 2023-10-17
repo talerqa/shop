@@ -11,7 +11,6 @@ import {
   infoGoodState
 } from "./components/goods/good/ui/infoGood/model/infoGoodSlice.ts";
 
-
 export const store = configureStore({
   reducer: {
     goodState,

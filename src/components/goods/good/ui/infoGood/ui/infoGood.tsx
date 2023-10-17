@@ -6,6 +6,7 @@ import {CardType} from "../../../model/goodSlice.ts";
 import s from './infoGood.module.scss'
 import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
 import {usehook} from "../../../../ui/goods.tsx";
+import {Preloader} from "../../../../../common/preloader.tsx";
 
 export const InfoGood = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -21,7 +22,7 @@ export const InfoGood = (): JSX.Element => {
       dispatch(infoGoodSlice({id: a![0].params.id}))
     }
     return () => {
-      dispatch(clearData({}))
+      dispatch(clearData())
     }
   }, [])
 
@@ -32,8 +33,14 @@ export const InfoGood = (): JSX.Element => {
   const location = useLocation();
   const a = matchRoutes(routes, location)
 
+  console.log(
+    good
+  )
+
   return (<>
-      {good.map((item: CardType) => {
+      {good.status === 'pending' &&
+          <div className={s.goodsPreloader}>< Preloader/></div>}
+      {good.infoGoods.map((item: CardType) => {
         return <div className={s.infoGood} key={item.id}>
           <img className={s.goodImg} src={item.img} alt="item-cart"/>
           <div className={s.information}>
