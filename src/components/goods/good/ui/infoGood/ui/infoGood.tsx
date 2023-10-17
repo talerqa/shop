@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {matchRoutes, useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../../../hooks.ts";
-import {infoGoodThunk} from "../model/infoGoodSlice.ts";
+import {infoGoodData, infoGoodThunk} from "../model/infoGoodSlice.ts";
 import {CardType} from "../../../model/goodSlice.ts";
 import s from './infoGood.module.scss'
 import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
@@ -10,6 +10,7 @@ import {usehook} from "../../../../ui/goods.tsx";
 export const InfoGood = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const {infoGoodSlice} = infoGoodThunk
+  const {clearData} = infoGoodData
   const navigate = useNavigate()
   const allGoods = useAppSelector(state => state.goodState)
 
@@ -18,6 +19,9 @@ export const InfoGood = (): JSX.Element => {
       navigate('/goods')
     } else if (Number(a![0].params.id)) {
       dispatch(infoGoodSlice({id: a![0].params.id}))
+    }
+    return () => {
+      dispatch(clearData({}))
     }
   }, [])
 

@@ -38,10 +38,10 @@ export const ShopCart = () => {
       <p className={s.totalCostTitle}>TOTAL COST: <span
         className={s.totalCost}>{totalItemsCostParse} {totalValue}</span>
       </p>
-      <div
-        className={s.shopCartBlock}>{stateShop.map((item: CardType, index) => {
-        return <GoodInShopCart item={item} key={index}/>
-      })}
+      <div className={s.shopCartBlock}>
+        {stateShop.map((item: CardType, index) => {
+          return <GoodInShopCart item={item} key={index}/>
+        })}
       </div>
     </div>
   );

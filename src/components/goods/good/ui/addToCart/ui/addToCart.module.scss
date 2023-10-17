@@ -1,37 +1,51 @@
 
-  .buttonsCount {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.buttonsCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .count {
-      border: 1px solid rgba(0, 0, 0, 0.29);
-      border-radius: 5px;
-      margin: 0 5px;
-      max-width: 18px;
-      padding: 7px;
-      text-align: center;
-      font-weight: 700;
+  .count {
+    border: 1px solid rgba(0, 0, 0, 0.29);
+    border-radius: 5px;
+    margin: 0 5px;
+    max-width: 18px;
+    padding: 7px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .buttonCount {
+    padding: 5px 0;
+    width: 50px;
+
+    &:hover {
+      background-color: white;
+      outline: none;
     }
-
-    .buttonCount {
-      padding: 5px 0;
-      width: 50px;
-    }
   }
+}
 
-  .resetCount {
-    font-size: 12px;
-    padding: 2px 8px;
-    margin: 5px auto 0;
-    max-width: 160px;
+.resetCount {
+  font-size: 12px;
+  padding: 2px 8px;
+  margin: 5px auto 0;
+  max-width: 160px;
 
+  &:hover {
+    background-color: white;
+    outline: none;
   }
+}
 
-  .buttonAddGood {
-    margin: 5px auto 0;
-    max-width: 160px;
-    min-height: 40px;
+.buttonAddGood {
+  margin: 5px auto 0;
+  max-width: 160px;
+  min-height: 40px;
+
+  &:hover {
+    background-color: white;
+    outline: none;
   }
+}
 
 

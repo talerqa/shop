@@ -5,11 +5,15 @@ import {colRef} from "../../../../../../firebase.ts";
 import {appAction} from "../../../../../app/model/appSlice.ts";
 
 const initialState: CardType[] = []
-
+console.log(initialState)
 export const slice = createSlice({
   name: 'infoGood',
   initialState,
-  reducers: {},
+  reducers: {
+    clearData: ()=> {
+      return []
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(infoGoodSlice.fulfilled, (_: any, action: PayloadAction<any>) => {

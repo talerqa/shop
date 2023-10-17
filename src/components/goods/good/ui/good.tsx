@@ -13,12 +13,12 @@ export const Good: React.FC<Props> = React.memo(props => {
   const {card, showModalHandler} = props
 
   return (<div className={s.good}>
-      <img src={card.img} className={s.goodImg} alt="image-item"/>
-      <NavLink to={`${card.id}`} className={s.titleGood}>{card.title}</NavLink>
-
-
+      <NavLink to={`${card.id}`} className={s.goodBlock}>
+        <img src={card.img} className={s.goodImg} alt="image-item"/>
+        <p className={s.titleGood}>{card.title}</p>
+      </NavLink>
       <div className={s.priceBlock}>
-        <p className={s.price}>{card.price} </p>
+        <p className={s.price}>{card.price}</p>
         <p className={s.value}>{card.value}</p>
       </div>
       <AddToCart card={card} showModalHandler={showModalHandler}/>
