@@ -4,7 +4,7 @@ import {useAppDispatch} from "../../../../hooks.ts";
 import {shopCart} from "../../../shopCart/shopCart/model/shopCartSlice.ts";
 import s from './good.module.scss'
 import {z, ZodError} from 'zod';
-
+import {NavLink} from "react-router-dom";
 
 type Props = {
   card: CardType
@@ -27,13 +27,11 @@ export const Good: React.FC<Props> = React.memo(props => {
     setCount(99)
   }
 
-
   const numberStringSchema = z.string().refine((value) => /^[0-9]*$/.test(value), {
     message: 'The value must consist of numbers only',
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
-
     try {
       numberStringSchema.parse(e.currentTarget.value);
       setCount(Number(e.currentTarget.value));
@@ -67,11 +65,11 @@ export const Good: React.FC<Props> = React.memo(props => {
     setCount(1)
     dispatch(resetDefaultValueItem({id}))
   }
-
+  console.log()
 
   return (<div className={s.good}>
       <img src={card.img} className={s.goodImg} alt="image-item"/>
-      <p className={s.titleGood}>{card.title}</p>
+      <NavLink to={`${card.id}`} className={s.titleGood}>{card.title}</NavLink>
       <div className={s.priceBlock}>
         <p className={s.price}>{card.price} </p>
         <p className={s.value}>{card.value}</p>

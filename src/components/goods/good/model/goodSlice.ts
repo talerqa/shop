@@ -10,13 +10,14 @@ export type CardType = {
   value: string,
   title: string,
   img: string,
-  count: number
+  count: number,
+  description: string,
 }
-export type CardStateType = CardType[]
-const initialState: CardStateType = []
+
+const initialState: CardType[] = []
 
 export const slice = createSlice({
-  name: 'counter',
+  name: 'cardData',
   initialState,
   reducers: {
     incrementCountCard: (state, action: PayloadAction<{
@@ -70,7 +71,7 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 }>();
 
 export const getGood = createAppAsyncThunk<{
-  goods: CardStateType
+  goods: CardType[]
 }, {}>('getGoods/fetchGood',
   async (_, thunkAPI) => {
     const {dispatch, rejectWithValue} = thunkAPI

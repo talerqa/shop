@@ -7,6 +7,9 @@ import {
   goodsInShopCartState
 } from "./components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
 import {appReducer} from "./components/app/model/appSlice.ts";
+import {
+  infoGoodState
+} from "./components/goods/good/ui/infoGood/model/infoGoodSlice.ts";
 
 
 export const store = configureStore({
@@ -14,7 +17,8 @@ export const store = configureStore({
     goodState,
     shopCartReducer,
     goodsInShopCartState,
-    appReducer
+    appReducer,
+    infoGoodState
   }
 })
 

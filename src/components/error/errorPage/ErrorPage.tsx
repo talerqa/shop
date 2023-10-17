@@ -1,4 +1,3 @@
-
 import error400 from "./400.svg";
 import s from "./errorPage.module.scss";
 
