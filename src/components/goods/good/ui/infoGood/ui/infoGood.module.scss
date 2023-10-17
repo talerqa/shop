@@ -1,47 +1,52 @@
-.good {
-  max-width: 300px;
+.infoGood {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: 10px;
-  box-shadow: #1a1a1a 0 1px 5px;
-  margin: 10px 5px;
-  border-radius: 10px;
-
-  .priceBlock {
-    display: flex;
-    justify-content: center;
-
-    .price {
-      margin: 0;
-      padding: 15px 5px 15px 0;
-      font-weight: 700;
-    }
-
-    .value {
-      margin: 0;
-      padding: 15px 0;
-      font-weight: 700;
-    }
-  }
-
-  .titleGood {
-    font-size: 18px;
-    margin: 0;
-    padding: 10px 5px;
-    text-align: center;
-    font-weight: 600;
-    word-break: break-word;
-  }
 
   .goodImg {
     display: block;
     background-color: white;
     border-radius: 15px;
-    padding: 5px;
-    margin: 0 auto;
-    width: 200px;
-    min-height: 200px;
+    padding: 20px;
+    margin: 0 10px auto;
+    max-width: 300px;
+    min-height: auto;
   }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    .title {    font-size: 18px;
+      margin: 0;
+      padding: 10px 5px;
+      text-align: center;
+      font-weight: 600;
+      word-break: break-word;}
+
+    .priceBlock {
+      display: flex;
+      justify-content: center;
+
+      .price {
+        margin: 0;
+        padding: 15px 5px 15px 0;
+        font-weight: 700;
+      }
+
+      .value {
+        margin: 0;
+        padding: 15px 0;
+        font-weight: 700;
+      }
+    }
+
+
+  }
+
+
+
 
   .buttonsCount {
     display: flex;
