@@ -94,6 +94,7 @@ export const Good: React.FC<Props> = React.memo(props => {
           img: card.img,
           price: card.price,
           title: card.title,
+          description: card.description,
           count: Number(count),
           value: card.value
         })}>Add to cart

@@ -23,6 +23,7 @@ const slice = createSlice({
             id: item.id,
             title: item.title,
             count: item.count,
+            description: item.description,
             img: item.img,
             value: item.value,
             price: item.price,
