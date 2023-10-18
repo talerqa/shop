@@ -1,24 +1,24 @@
 import {NavLink} from "react-router-dom";
-import {CartShopImg} from "../../../assets/img/ui/cartShopImg.tsx";
+import {CartShopImg} from "@/assets/img/cartShop/cartShopImg.tsx";
 import s from './menu.module.scss';
-import {useAppDispatch, useAppSelector} from "../../../hooks.ts";
+import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
 import {
   goodsInShopCart
 } from "../../shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
 import {useEffect} from "react";
 
 export const Menu = () => {
-  const state = useAppSelector((state) => state.shopCartReducer)
+
+  const {setTotalCount} = goodsInShopCart
   const totalCount = useAppSelector((state) =>
     state.goodsInShopCartState.totalCount)
-  const {setTotalCount} = goodsInShopCart
-  const dispatch = useAppDispatch()
+  const state = useAppSelector((state) => state.shopCartReducer)
 
   let totalCountValue: number = 0
   state.forEach(item => {
     totalCountValue += item.count
   })
-
+  const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(setTotalCount({totalCount: totalCountValue}))
   }, [totalCountValue])

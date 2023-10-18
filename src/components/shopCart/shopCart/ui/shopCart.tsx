@@ -1,5 +1,5 @@
-import {CardType} from "../../../goods/good/model/goodSlice.ts";
-import {useAppDispatch, useAppSelector} from "../../../../hooks.ts";
+import {CardType} from "@/components/goods/good/model";
+import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
 import {
   goodsInShopCart
 } from "../../goodInShopCart/model/goodnShopCartSlice.ts";

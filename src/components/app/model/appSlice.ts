@@ -1,21 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {goodThunk} from "../../goods/good/model/goodSlice.ts";
+import {goodThunk} from "@/components/goods/good/model";
 
-export type RequestStatusType = "idle" | "loading" | "succeeded" | "failed";
+export type RequestStatusType = "idle" | "pending" | "fulfilled" | "rejected";
 
 type InitialStateType = {
   status: RequestStatusType
   error: string | null;
-  isInitialized: boolean;
 }
 const initialState: InitialStateType = {
   status: "idle",
   error: null,
-  isInitialized: false,
 };
 
  const slice = createSlice({
-  name: 'counter',
+  name: 'app',
   initialState,
   reducers: {
     setError: (state, action)=> {
@@ -25,16 +23,13 @@ const initialState: InitialStateType = {
   extraReducers: builder => {
     builder
       .addCase(goodThunk.getGood.pending, (state)=> {
-        state.status = 'loading'
-        return
+        state.status = 'pending'
       })
       .addCase(goodThunk.getGood.fulfilled, (state)=> {
-        state.status = 'succeeded'
-        return
+        state.status = 'fulfilled'
       })
       .addCase(goodThunk.getGood.rejected, (state)=> {
-        state.status = 'failed'
-        return
+        state.status = 'rejected'
       })
   }
 })

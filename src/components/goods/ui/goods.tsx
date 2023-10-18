@@ -1,18 +1,18 @@
 import {Good} from "../good/ui/good.tsx";
-import {useAppSelector} from "../../../hooks.ts";
+import {useShowModal} from "@/hooks/useShowModal";
+import {useAppSelector} from "@/hooks/rtkHooks";
+import {Preloader} from "@/components/common/preloader";
 import s from './goods.module.scss'
-import {useEffect, useState} from "react";
-import {Preloader} from "../../common/preloader.tsx";
 
 export const Goods = () => {
     const state = useAppSelector((state) => state.goodState)
 
-    const {showModal, showModalHandler} = usehook()
+    const {showModal, showModalHandler} = useShowModal()
 
     const status = useAppSelector(state => state.appReducer.status)
 
     return (<div className={s.goods}>
-        {status === 'loading' &&
+        {status === 'pending' &&
             <div className={s.goodsPreloader}>< Preloader/></div>}
         {state.map((card, index) => {
           return <Good card={card} key={index}
@@ -26,21 +26,4 @@ export const Goods = () => {
   }
 ;
 
-
-export const usehook = () => {
-  const [showModal, setModal] = useState<boolean>(false)
-
-  useEffect(() => {
-    let timeoutID = setTimeout(() => {
-      showModalHandler(false)
-    }, 1500)
-    return () => clearTimeout(timeoutID)
-  }, [showModal])
-
-  const showModalHandler = (showModal: boolean) => {
-    setModal(showModal)
-  }
-
-  return {showModal, showModalHandler}
-}
 

@@ -1,14 +1,15 @@
-import React from "react";
-import {CardType} from "../model/goodSlice.ts";
+import {memo} from "react";
 import s from './good.module.scss'
+import {CardType} from "../model/goodSlice.ts";
 import {NavLink} from "react-router-dom";
 import {AddToCart} from "./addToCart/ui/addToCart.tsx";
+
 
 type Props = {
   card: CardType
   showModalHandler: (showModal: boolean) => void
 }
-export const Good: React.FC<Props> = React.memo(props => {
+export const Good: React.FC<Props> = memo(props => {
 
   const {card, showModalHandler} = props
 

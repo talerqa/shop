@@ -1,7 +1,7 @@
 import React from 'react';
-import {CardType} from "../../../goods/good/model/goodSlice.ts";
+import {CardType} from "@/components/goods/good/model";
 import {shopCart} from "../../shopCart/model/shopCartSlice.ts";
-import {useAppDispatch} from "../../../../hooks.ts";
+import {useAppDispatch} from "@/hooks/rtkHooks";
 import s from './goodInshopCart.module.scss'
 import {NavLink} from "react-router-dom";
 
@@ -30,12 +30,9 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
 
   const deleteHandlerItemFromCart = (id: number) => {
     dispatch(deleteItemFromCard({id}))
-
-
   }
 
-
-  return (<div className={s.goodShopCart}>
+  return (<div className={s.goodInShopCart}>
     <button onClick={() => deleteHandlerItemFromCart(item.id)}
             className={s.buttonDelete}>
       <svg className={s.imgDelete} viewBox="0 0 24 24" fill="none"

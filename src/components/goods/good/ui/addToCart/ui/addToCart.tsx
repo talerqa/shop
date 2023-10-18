@@ -1,14 +1,15 @@
-import {CardType, goodData} from "../../../model/goodSlice.ts";
+
 import {
   shopCart
-} from "../../../../../shopCart/shopCart/model/shopCartSlice.ts";
-import {useAppDispatch} from "../../../../../../hooks.ts";
-import {ChangeEvent, useState} from "react";
+} from "@/components/shopCart/shopCart/model";
+import {useAppDispatch} from "@/hooks/rtkHooks";
+import {ChangeEvent, memo, useState} from "react";
 import {z, ZodError} from "zod";
 import s from "./addToCart.module.scss";
+import {CardType, goodData} from "@/components/goods/good/model";
 
 
-export const AddToCart = (props: {
+export const AddToCart = memo((props: {
   card: CardType
   showModalHandler?: any
 }) => {
@@ -94,4 +95,4 @@ export const AddToCart = (props: {
       })}>Add to cart
     </button>
   </>)
-}
+})

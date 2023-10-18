@@ -1,12 +1,15 @@
 import {useEffect} from "react";
 import {matchRoutes, useLocation, useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../../../../../hooks.ts";
-import {infoGoodData, infoGoodThunk} from "../model/infoGoodSlice.ts";
+import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
 import s from './infoGood.module.scss'
-import {usehook} from "../../../../ui/goods.tsx";
-import {Preloader} from "../../../../../common/preloader.tsx";
-import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
-import {CardType} from "../../../model/goodSlice.ts";
+import {Preloader} from "@/components/common/preloader";
+import {useShowModal} from "@/hooks/useShowModal";
+import {CardType} from "@/components/goods/good/model";
+import {AddToCart} from "@/components/goods/good/ui/addToCart/ui";
+import {
+  infoGoodData,
+  infoGoodThunk
+} from "@/components/goods/good/ui/infoGood/model/infoGoodSlice.ts";
 
 export const InfoGood = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -26,7 +29,7 @@ export const InfoGood = (): JSX.Element => {
     }
   }, [])
 
-  const {showModalHandler} = usehook()
+  const {showModalHandler} = useShowModal()
 
   const good = useAppSelector(state => state.infoGoodState)
   const routes = [{path: "/goods/:id"}]
