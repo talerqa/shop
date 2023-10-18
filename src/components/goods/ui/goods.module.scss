@@ -10,11 +10,8 @@
     position: absolute;
     display: flex;
     top: 180px;
-    justify-content: center;
-    align-self: center;
-    left: 30px;
-    transform: translate(0, -50%)
-  }
+
+    z-index: 10;  }
 
   .modalNotification {
     margin: 0 auto;

@@ -2,11 +2,11 @@ import {useEffect} from "react";
 import {matchRoutes, useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../../../hooks.ts";
 import {infoGoodData, infoGoodThunk} from "../model/infoGoodSlice.ts";
-import {CardType} from "../../../model/goodSlice.ts";
 import s from './infoGood.module.scss'
-import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
 import {usehook} from "../../../../ui/goods.tsx";
 import {Preloader} from "../../../../../common/preloader.tsx";
+import {AddToCart} from "../../addToCart/ui/addToCart.tsx";
+import {CardType} from "../../../model/goodSlice.ts";
 
 export const InfoGood = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -33,11 +33,7 @@ export const InfoGood = (): JSX.Element => {
   const location = useLocation();
   const a = matchRoutes(routes, location)
 
-  console.log(
-    good
-  )
-
-  return (<>
+  return (<div className={s.infoGoodBlock}>
       {good.status === 'pending' &&
           <div className={s.goodsPreloader}>< Preloader/></div>}
       {good.infoGoods.map((item: CardType) => {
@@ -46,15 +42,16 @@ export const InfoGood = (): JSX.Element => {
           <div className={s.information}>
             <p className={s.title}>{item.title}</p>
             <div className={s.priceBlock}>
+              <p className={s.titlePrice}>Price:</p>
               <span className={s.price}>{item.price}</span>
               <span className={s.value}>{item.value}</span>
             </div>
-            <p>{item.description}</p>
+            <p className={s.description}>{item.description}</p>
             <AddToCart card={item} showModalHandler={showModalHandler}/>
           </div>
         </div>
       })}
-    </>
+    </div>
   );
 }
 

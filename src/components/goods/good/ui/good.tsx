@@ -6,7 +6,7 @@ import {AddToCart} from "./addToCart/ui/addToCart.tsx";
 
 type Props = {
   card: CardType
-  showModalHandler: any
+  showModalHandler: (showModal: boolean) => void
 }
 export const Good: React.FC<Props> = React.memo(props => {
 

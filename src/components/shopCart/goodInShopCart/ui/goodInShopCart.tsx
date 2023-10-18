@@ -19,16 +19,21 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
   }
 
   const decrementHandler = (id: number) => {
-    dispatch(decrementCountCard({id}))
+
+    if (item.count > 1) {
+      dispatch(decrementCountCard({id}))
+    } else if (item.count === 1) {
+      dispatch(deleteItemFromCard({id: item.id}))
+
+    }
   }
 
   const deleteHandlerItemFromCart = (id: number) => {
     dispatch(deleteItemFromCard({id}))
+
+
   }
 
-  if (item.count === 0) {
-    dispatch(deleteItemFromCard({id: item.id}))
-  }
 
   return (<div className={s.goodShopCart}>
     <button onClick={() => deleteHandlerItemFromCart(item.id)}

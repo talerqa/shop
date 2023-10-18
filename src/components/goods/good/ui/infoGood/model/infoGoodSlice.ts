@@ -6,12 +6,10 @@ import {appAction} from "../../../../../app/model/appSlice.ts";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected'
 
-
 const initialState: any = {
   infoGoods: [] as CardType[],
   status: '' as  RequestState,
 }
-
 export const slice = createSlice({
   name: 'infoGood',
   initialState,
@@ -31,7 +29,6 @@ export const slice = createSlice({
       })
       .addCase(infoGoodSlice.rejected, (state: any) => {
         state.status = 'rejected'
-
       })
   }
 })
