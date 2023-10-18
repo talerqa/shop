@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {goodState} from "./components/goods/good/model/goodSlice.ts";
+import {goodState} from "@/components/goods/good/model";
 import {
   shopCartReducer
-} from "./components/shopCart/shopCart/model/shopCartSlice.ts";
+} from "@/components/shopCart/shopCart/model";
 import {
   goodsInShopCartState
 } from "./components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";

@@ -2,10 +2,11 @@ import {NavLink} from "react-router-dom";
 import {CartShopImg} from "@/assets/img/cartShop/cartShopImg.tsx";
 import s from './menu.module.scss';
 import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
+
+import {useEffect} from "react";
 import {
   goodsInShopCart
-} from "../../shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
-import {useEffect} from "react";
+} from "@/components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
 
 export const Menu = () => {
 
@@ -24,8 +25,16 @@ export const Menu = () => {
   }, [totalCountValue])
 
   return (<div className={s.menu}>
-    <NavLink to={'goods'} className={s.title}> Orders </NavLink>
-    <NavLink to={'shop-cart'} className={s.shop}>
+    <NavLink to={'goods'}
+             className={({isActive}) =>
+               isActive ? s.active + ' ' + s.title : s.title
+             }
+
+    > Orders </NavLink>
+    <NavLink to={'shop-cart'}
+             className={({isActive}) =>
+               isActive ? s.active + ' ' + s.shop : s.shop
+             }>
       <CartShopImg/>
       <span className={s.ellipse}>{totalCount}</span>
     </NavLink>

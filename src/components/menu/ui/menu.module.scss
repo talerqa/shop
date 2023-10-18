@@ -9,15 +9,22 @@
 
   .title {
     font-size: 24px;
-    padding: 5px;
+    padding: 5px 15px;
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
   }
+
+
 
   .shop {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
     .ellipse {
       position: absolute;
       display: flex;
@@ -31,5 +38,10 @@
       bottom: -10px;
       right: 0;
     }
+
+  }
+  .active {
+    border-radius: 15px;
+    background-color: rgba(130, 124, 217, 0.29);
   }
 }

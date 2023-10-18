@@ -1,29 +1,21 @@
-import {Good} from "../good/ui/good.tsx";
-import {useShowModal} from "@/hooks/useShowModal";
 import {useAppSelector} from "@/hooks/rtkHooks";
 import {Preloader} from "@/components/common/preloader";
+import {Good} from "@/components/goods/good/ui";
 import s from './goods.module.scss'
 
 export const Goods = () => {
-    const state = useAppSelector((state) => state.goodState)
 
-    const {showModal, showModalHandler} = useShowModal()
+  const goodState = useAppSelector((state) => state.goodState)
+  const status = useAppSelector(state => state.appReducer.status)
 
-    const status = useAppSelector(state => state.appReducer.status)
-
-    return (<div className={s.goods}>
-        {status === 'pending' &&
-            <div className={s.goodsPreloader}>< Preloader/></div>}
-        {state.map((card, index) => {
-          return <Good card={card} key={index}
-                       showModalHandler={showModalHandler}/>
-        })}
-        {showModal && <div className={s.modalNotification}>
-            <span className={s.modalText}>Add to cart</span>
-        </div>}
-      </div>
-    );
-  }
-;
-
+  return (<div className={s.goods}>
+      {status === 'pending' && <div className={s.goodsPreloader}>
+          < Preloader/>
+      </div>}
+      {goodState.map((card, index) => {
+        return <Good card={card} key={index}/>
+      })}
+    </div>
+  );
+}
 

@@ -14,7 +14,7 @@ function App() {
   const {getGood} = goodThunk
 
   useEffect(() => {
-    dispatch(getGood({}))
+    dispatch(getGood())
   }, [])
 
   return (<div className={s.app}>

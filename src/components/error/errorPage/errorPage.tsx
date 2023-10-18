@@ -4,7 +4,7 @@ import s from "./errorPage.module.scss";
 export const ErrorPage = () => {
   return (
     <div className={s.errorBlock}>
-      <img className={s.errorImage} src={error400} alt="" />
+      <img className={s.errorImage} src={error400} alt="error" />
     </div>
   );
 };

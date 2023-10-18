@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {CardType, createAppAsyncThunk} from "../../../model/goodSlice.ts";
 import {getDocs} from "firebase/firestore";
-import {colRef} from "../../../../../../firebase.ts";
+import {colRef} from "@/firebase.ts";
 import {appAction} from "../../../../../app/model/appSlice.ts";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected'

@@ -1,12 +1,12 @@
+import {useEffect} from "react";
 import {CardType} from "@/components/goods/good/model";
 import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
 import {
   goodsInShopCart
-} from "../../goodInShopCart/model/goodnShopCartSlice.ts";
-import {GoodInShopCart} from "../../goodInShopCart/ui/goodInShopCart.tsx";
+} from "@/components/shopCart/goodInShopCart/model/goodnShopCartSlice.ts";
+import {shopCart} from "@/components/shopCart/shopCart/model";
+import {GoodInShopCart} from "@/components/shopCart/goodInShopCart/ui";
 import s from './shopCart.module.scss'
-import {useEffect} from "react";
-import {shopCart} from "../model/shopCartSlice.ts";
 
 export const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
@@ -35,8 +35,8 @@ export const ShopCart = () => {
 
   return (<div className={s.shopCart}>
       <button onClick={resetCartHandler}>Reset cart shop</button>
-      <p className={s.totalCostTitle}>TOTAL COST: <span
-        className={s.totalCost}>{totalItemsCostParse} {totalValue}</span>
+      <p className={s.totalCostTitle}>TOTAL COST:
+        <span className={s.totalCost}> {totalItemsCostParse} {totalValue}</span>
       </p>
       <div className={s.shopCartBlock}>
         {stateShop.map((item: CardType, index) => {

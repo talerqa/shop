@@ -1,9 +1,10 @@
 import React from 'react';
 import {CardType} from "@/components/goods/good/model";
-import {shopCart} from "../../shopCart/model/shopCartSlice.ts";
 import {useAppDispatch} from "@/hooks/rtkHooks";
-import s from './goodInshopCart.module.scss'
 import {NavLink} from "react-router-dom";
+import {DeleteSvg} from "@/assets/svgElements/deleteSvg.tsx";
+import {shopCart} from "@/components/shopCart/shopCart/model";
+import s from './goodInshopCart.module.scss'
 
 type Props = {
   item: CardType
@@ -19,12 +20,10 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
   }
 
   const decrementHandler = (id: number) => {
-
     if (item.count > 1) {
       dispatch(decrementCountCard({id}))
     } else if (item.count === 1) {
       dispatch(deleteItemFromCard({id: item.id}))
-
     }
   }
 
@@ -35,19 +34,7 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
   return (<div className={s.goodInShopCart}>
     <button onClick={() => deleteHandlerItemFromCart(item.id)}
             className={s.buttonDelete}>
-      <svg className={s.imgDelete} viewBox="0 0 24 24" fill="none"
-           xmlns="http://www.w3.org/2000/svg">
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round"
-           strokeLinejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <circle opacity="0.5" cx="12" cy="12" r="10" stroke="#1C274C"
-                  strokeWidth="1.5"></circle>
-          <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
-                stroke="#1C274C" strokeWidth="1.5"
-                strokeLinecap="round"></path>
-        </g>
-      </svg>
+      <DeleteSvg className={s.imgDelete}/>
     </button>
     <NavLink to={`/goods/${item.id}`} className={s.goodBlock}>
       <img className={s.img} src={item.img} alt=""/>
@@ -63,7 +50,6 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
               className={s.buttonDec}>+
       </button>
     </div>
-  </div>)
-    ;
+  </div>);
 };
 

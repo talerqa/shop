@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {goodThunk} from "@/components/goods/good/model";
 
 export type RequestStatusType = "idle" | "pending" | "fulfilled" | "rejected";
@@ -16,7 +16,7 @@ const initialState: InitialStateType = {
   name: 'app',
   initialState,
   reducers: {
-    setError: (state, action)=> {
+    setError: (state, action: PayloadAction<{error: string | null}>)=> {
       state.error = action.payload.error
     }
   },

@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {getDocs} from "firebase/firestore";
-import {colRef} from "../../../../firebase.ts";
-import {AppDispatch, RootState} from "../../../../store.ts";
+import {colRef} from "@/firebase.ts";
+import {AppDispatch, RootState} from "@/store.ts";
 import {appAction} from "../../../app/model/appSlice.ts";
 
 export type CardType = {
@@ -17,7 +17,7 @@ export type CardType = {
 const initialState: CardType[] = []
 
 export const slice = createSlice({
-  name: 'cardData',
+  name: 'getGoods',
   initialState,
   reducers: {
     incrementCountCard: (state, action: PayloadAction<{
@@ -72,7 +72,7 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 
 export const getGood = createAppAsyncThunk<{
   goods: CardType[]
-}, {}>('getGoods/fetchGood',
+}, void>('getGoods/fetchGood',
   async (_, thunkAPI) => {
     const {dispatch, rejectWithValue} = thunkAPI
     try {

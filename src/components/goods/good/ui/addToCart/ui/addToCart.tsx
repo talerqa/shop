@@ -1,19 +1,16 @@
-
-import {
-  shopCart
-} from "@/components/shopCart/shopCart/model";
+import {shopCart} from "@/components/shopCart/shopCart/model";
 import {useAppDispatch} from "@/hooks/rtkHooks";
 import {ChangeEvent, memo, useState} from "react";
 import {z, ZodError} from "zod";
 import s from "./addToCart.module.scss";
 import {CardType, goodData} from "@/components/goods/good/model";
+import {useShowModal} from "@/hooks/useShowModal";
+import {appAction} from "@/components/app/model/appSlice.ts";
 
-
-export const AddToCart = memo((props: {
+type Props = {
   card: CardType
-  showModalHandler?: any
-}) => {
-
+}
+export const AddToCart = memo((props: Props) => {
   const {
     incrementCountCard,
     decrementCountCard,
@@ -22,8 +19,9 @@ export const AddToCart = memo((props: {
   } = goodData
   const {addCardInShop} = shopCart
   const dispatch = useAppDispatch()
-  const {card, showModalHandler} = props
-
+  const {card} = props
+  const {setError} = appAction
+  const {showModal, showModalHandler} = useShowModal()
   const [count, setCount] = useState<number>(card.count)
 
   if (count > 99) {
@@ -41,9 +39,10 @@ export const AddToCart = memo((props: {
       dispatch(setCountCard({id, value: Number(e.currentTarget.value)}))
     } catch (error) {
       const customError = error as ZodError
-      console.log(customError.issues[0].message)
+      dispatch(setError({error: customError.issues[0].message}))
     }
   }
+
   const incrementHandler = (id: number) => {
     setCount((count) => count + 1)
     dispatch(incrementCountCard({id, count}))
@@ -70,6 +69,9 @@ export const AddToCart = memo((props: {
 
   return (<>
     <div className={s.buttonsCount}>
+      {showModal && <div className={s.modalNotification}>
+          <span className={s.modalText}>Add to cart</span>
+      </div>}
       <button className={s.buttonCount}
               onClick={() => decrementHandler(card.id)}>-
       </button>
@@ -91,7 +93,7 @@ export const AddToCart = memo((props: {
         title: card.title,
         description: card.description,
         count: Number(count),
-        value: card.value
+        value: card.value,
       })}>Add to cart
     </button>
   </>)

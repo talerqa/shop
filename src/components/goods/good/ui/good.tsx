@@ -1,17 +1,16 @@
 import {memo} from "react";
 import s from './good.module.scss'
-import {CardType} from "../model/goodSlice.ts";
 import {NavLink} from "react-router-dom";
-import {AddToCart} from "./addToCart/ui/addToCart.tsx";
+import {AddToCart} from "@/components/goods/good/ui/addToCart/ui";
+import {CardType} from "@/components/goods/good/model";
 
 
 type Props = {
   card: CardType
-  showModalHandler: (showModal: boolean) => void
 }
 export const Good: React.FC<Props> = memo(props => {
 
-  const {card, showModalHandler} = props
+  const {card} = props
 
   return (<div className={s.good}>
       <NavLink to={`${card.id}`} className={s.goodBlock}>
@@ -22,7 +21,7 @@ export const Good: React.FC<Props> = memo(props => {
         <p className={s.price}>{card.price}</p>
         <p className={s.value}>{card.value}</p>
       </div>
-      <AddToCart card={card} showModalHandler={showModalHandler}/>
+      <AddToCart card={card}/>
     </div>
   );
 })
