@@ -4,10 +4,10 @@ import {NavLink} from "react-router-dom";
 import {AddToCart} from "@/components/goods/good/ui/addToCart/ui";
 import {CardType} from "@/components/goods/good/model";
 
-
 type Props = {
   card: CardType
 }
+
 export const Good: React.FC<Props> = memo(props => {
 
   const {card} = props

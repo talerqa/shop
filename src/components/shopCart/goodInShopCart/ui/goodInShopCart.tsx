@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {CardType} from "@/components/goods/good/model";
 import {useAppDispatch} from "@/hooks/rtkHooks";
 import {NavLink} from "react-router-dom";
@@ -10,7 +10,7 @@ type Props = {
   item: CardType
 }
 
-export const GoodInShopCart: React.FC<Props> = (props) => {
+export const GoodInShopCart: React.FC<Props> = memo((props) => {
   const dispatch = useAppDispatch()
   const {incrementCountCard, decrementCountCard, deleteItemFromCard} = shopCart
   const {item} = props
@@ -51,5 +51,5 @@ export const GoodInShopCart: React.FC<Props> = (props) => {
       </button>
     </div>
   </div>);
-};
+})
 

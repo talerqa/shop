@@ -1,6 +1,6 @@
 import {shopCart} from "@/components/shopCart/shopCart/model";
 import {useAppDispatch} from "@/hooks/rtkHooks";
-import {ChangeEvent, memo, useState} from "react";
+import {ChangeEvent, memo, useCallback, useState} from "react";
 import {z, ZodError} from "zod";
 import s from "./addToCart.module.scss";
 import {CardType, goodData} from "@/components/goods/good/model";
@@ -32,7 +32,7 @@ export const AddToCart = memo((props: Props) => {
     message: 'The value must consist of numbers only',
   });
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>, id: number) => {
     try {
       numberStringSchema.parse(e.currentTarget.value);
       setCount(Number(e.currentTarget.value));
@@ -41,20 +41,21 @@ export const AddToCart = memo((props: Props) => {
       const customError = error as ZodError
       dispatch(setError({error: customError.issues[0].message}))
     }
-  }
+  }, [count])
 
-  const incrementHandler = (id: number) => {
+  const incrementHandler = useCallback((id: number) => {
     setCount((count) => count + 1)
     dispatch(incrementCountCard({id, count}))
-  }
+  }, [count])
 
-  const decrementHandler = (id: number) => {
+  const decrementHandler = useCallback((id: number) => {
     if (count === 1) {
       return
     }
     setCount((count) => count - 1)
     dispatch(decrementCountCard({id, count}))
-  }
+  }, [count])
+
   const addCardInShopCart = (data: CardType) => {
     setCount(1)
     dispatch(addCardInShop(data))
@@ -62,10 +63,10 @@ export const AddToCart = memo((props: Props) => {
     showModalHandler(true)
   }
 
-  const resetDefaultValue = (id: number) => {
+  const resetDefaultValue = useCallback((id: number) => {
     setCount(1)
     dispatch(resetDefaultValueItem({id}))
-  }
+  }, [count])
 
   return (<>
     <div className={s.buttonsCount}>
