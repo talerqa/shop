@@ -17,6 +17,8 @@ export const ShopCart = () => {
 
   useEffect(() => {
     dispatch(setTotalCost({totalCost: totalItemsCostParse}))
+
+
   }, [])
 
   let totalItemsCost = stateShop.reduce((a: any, b: any, index) => {

@@ -10,9 +10,13 @@ const firebaseConfig = {
   appId: "1:489719419996:web:a2a0d73dcea688c3234299",
   measurementId: "G-4KFVLNF2KC"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
 export const colRef = collection(db, 'shop')
 
 
+console.log(
+  colRef
+)

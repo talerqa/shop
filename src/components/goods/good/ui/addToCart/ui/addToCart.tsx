@@ -7,6 +7,7 @@ import {CardType, goodData} from "@/components/goods/good/model";
 import {useShowModal} from "@/hooks/useShowModal";
 import {appAction} from "@/components/app/model/appSlice.ts";
 
+
 type Props = {
   card: CardType
 }
