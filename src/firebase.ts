@@ -17,6 +17,3 @@ const db = getFirestore(app)
 export const colRef = collection(db, 'shop')
 
 
-console.log(
-  colRef
-)

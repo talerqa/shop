@@ -1,8 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {getDocs} from "firebase/firestore";
-import {colRef} from "@/firebase.ts";
 import {AppDispatch, RootState} from "@/store.ts";
-import {appAction} from "../../../app/model/appSlice.ts";
+import {productsApi} from "@/components/goods/good/api/api.ts";
 
 export type CardType = {
   id: number,
@@ -73,19 +71,11 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 export const getGood = createAppAsyncThunk<{
   goods: CardType[]
 }, void>('getGoods/fetchGood',
-  async (_, thunkAPI) => {
-    const {dispatch, rejectWithValue} = thunkAPI
+  async (_: any, thunkAPI) => {
+    const {rejectWithValue} = thunkAPI
     try {
-      let array: any = []
-      await getDocs(colRef).then((res) => {
-        res.docs.forEach((doc) => {
-          array.push({...doc.data(), id: doc.id})
-        })
-      }).catch((err) => {
-        dispatch(appAction.setError(err.message))
-        return err.message
-      })
-      return {goods: array[0].shopItems}
+      const products = await productsApi.getProducts()
+      return {goods: products.data}
     } catch (e) {
       return rejectWithValue(null)
     }

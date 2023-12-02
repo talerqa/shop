@@ -33,14 +33,13 @@ const slice = createSlice({
         }
       })
       localStorage.setItem('goodsInCart', JSON.stringify(outputArray))
-
       return outputArray
-
     },
     incrementCountCard: (state, action: PayloadAction<{ id: number }>) => {
       const index = state.findIndex((card) => card.id === action.payload.id)
       const card = state[index]
       card.count += 1
+      localStorage.setItem('goodsInCart', JSON.stringify(state))
     },
     decrementCountCard: (state, action: PayloadAction<{ id: number }>) => {
       const index = state.findIndex((card) => card.id === action.payload.id)
@@ -50,10 +49,12 @@ const slice = createSlice({
       } else {
         card.count = 0
       }
+      localStorage.setItem('goodsInCart', JSON.stringify(state))
     },
     deleteItemFromCard: (state, action: PayloadAction<{ id: number }>) => {
       const index = state.findIndex((card) => card.id === action.payload.id)
       if (index !== -1) state.splice(index, 1);
+      localStorage.setItem('goodsInCart', JSON.stringify(state))
     },
     deleteAllItemsFromCart: () => {
       return []

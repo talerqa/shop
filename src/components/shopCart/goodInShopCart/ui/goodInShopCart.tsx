@@ -26,7 +26,6 @@ export const GoodInShopCart: React.FC<Props> = memo((props) => {
       dispatch(deleteItemFromCard({id: item.id}))
     }
   }
-
   const deleteHandlerItemFromCart = (id: number) => {
     dispatch(deleteItemFromCard({id}))
   }
