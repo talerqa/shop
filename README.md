@@ -1,27 +1,33 @@
-# React + TypeScript + Vite
+# [Shopping list](https://shop-kappa-vert.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>A platform for managing your shopping list, allowing you to add and interact with products and your cart</p>
 
-Currently, two official plugins are available:
+## Technologies:
+TypeScript | React | Redux Toolkit | React-Router-Dom | Node JS (Express JS)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Back-end: https://github.com/talerqa/nodejs
 
-## Expanding the ESLint configuration
+<div align="center">
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<p align="center">
 
-- Configure the top-level `parserOptions` property like this:
+![image](https://github.com/talerqa/shop/assets/97165727/22383fc5-b21f-48ce-8766-643b10fc2334)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+</p>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<p align="center">
+
+![image](https://github.com/talerqa/shop/assets/97165727/263b1705-3502-469d-ba41-3fda0e59158c)
+
+</p>
+
+<p align="center">
+   
+![image](https://github.com/talerqa/shop/assets/97165727/bc18b5b9-02ef-435b-9641-609764ae763e)
+
+</p>
+
+
+</div>
+
+
