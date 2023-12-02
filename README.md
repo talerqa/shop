@@ -23,11 +23,9 @@ Back-end: https://github.com/talerqa/nodejs
 
 <p align="center">
    
-![image](https://github.com/talerqa/shop/assets/97165727/bc18b5b9-02ef-435b-9641-609764ae763e)
+![image](https://github.com/talerqa/shop/assets/97165727/d38bb3fa-c3bd-4a03-8cf4-c7e32dfb102f)
 
 </p>
-
-
 </div>
 
 
