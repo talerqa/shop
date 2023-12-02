@@ -30,7 +30,7 @@ export const Menu = () => {
                isActive ? s.active + ' ' + s.title : s.title
              }
 
-    > Orders </NavLink>
+    > Goods </NavLink>
     <NavLink to={'shop-cart'}
              className={({isActive}) =>
                isActive ? s.active + ' ' + s.shop : s.shop

@@ -3,13 +3,14 @@ import {useAppDispatch} from "@/hooks/rtkHooks";
 import {ChangeEvent, memo, useCallback, useState} from "react";
 import {z, ZodError} from "zod";
 import s from "./addToCart.module.scss";
-import {CardType, goodData} from "@/components/goods/good/model";
+import {goodData} from "@/components/goods/good/model";
 import {useShowModal} from "@/hooks/useShowModal";
 import {appAction} from "@/components/app/model/appSlice.ts";
+import {ProductType} from "@/components/goods/good/api/api.ts";
 
 
 type Props = {
-  card: CardType
+  card: ProductType
 }
 export const AddToCart = memo((props: Props) => {
   const {
@@ -57,7 +58,7 @@ export const AddToCart = memo((props: Props) => {
     dispatch(decrementCountCard({id, count}))
   }, [count])
 
-  const addCardInShopCart = (data: CardType) => {
+  const addCardInShopCart = (data: ProductType) => {
     setCount(1)
     dispatch(addCardInShop(data))
     dispatch(resetDefaultValueItem({id: data.id}))

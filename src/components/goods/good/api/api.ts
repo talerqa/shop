@@ -14,6 +14,9 @@ export const productsApi = {
   getProductById(id: number) {
     return instance.get<ProductType>(`/products/${id}`);
   },
+  findProductByName(title: string) {
+    return instance.get<ProductType>(`/products?title=${title}`);
+  },
 };
 
 

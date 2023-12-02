@@ -1,13 +1,13 @@
 import React, {memo} from 'react';
-import {CardType} from "@/components/goods/good/model";
 import {useAppDispatch} from "@/hooks/rtkHooks";
 import {NavLink} from "react-router-dom";
 import {DeleteSvg} from "@/assets/svgElements/deleteSvg.tsx";
 import {shopCart} from "@/components/shopCart/shopCart/model";
 import s from './goodInshopCart.module.scss'
+import {ProductType} from "@/components/goods/good/api/api.ts";
 
 type Props = {
-  item: CardType
+  item: ProductType
 }
 
 export const GoodInShopCart: React.FC<Props> = memo((props) => {

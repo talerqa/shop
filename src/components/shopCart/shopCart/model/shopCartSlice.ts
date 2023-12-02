@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {CardType} from "@/components/goods/good/model";
+import {ProductType} from "@/components/goods/good/api/api.ts";
 
-const initialState: CardType[] = JSON.parse(localStorage.getItem('goodsInCart') || '[]')?.length
+const initialState: ProductType[] = JSON.parse(localStorage.getItem('goodsInCart') || '[]')?.length
   ? JSON.parse(localStorage.getItem('goodsInCart') || '[]')
   : []
 
@@ -9,14 +9,14 @@ const slice = createSlice({
   name: 'shopCart',
   initialState,
   reducers: {
-    addCardInShop: (state, action: PayloadAction<CardType>) => {
+    addCardInShop: (state, action: PayloadAction<ProductType>) => {
       if (action.payload.count === 0) {
         return
       }
       const newState = [...state];
       newState.push(action.payload)
-      const outputArray: CardType[] = [];
-      newState.forEach((item: CardType) => {
+      const outputArray: ProductType[] = [];
+      newState.forEach((item: ProductType) => {
         const card = outputArray.find(outputItem => outputItem.id === item.id);
         if (card) {
           card.count += item.count;

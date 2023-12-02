@@ -1,5 +1,4 @@
 import {useEffect} from "react";
-import {CardType} from "@/components/goods/good/model";
 import {useAppDispatch, useAppSelector} from "@/hooks/rtkHooks";
 import {
   goodsInShopCart
@@ -7,6 +6,7 @@ import {
 import {shopCart} from "@/components/shopCart/shopCart/model";
 import {GoodInShopCart} from "@/components/shopCart/goodInShopCart/ui";
 import s from './shopCart.module.scss'
+import {ProductType} from "@/components/goods/good/api/api.ts";
 
 export const ShopCart = () => {
   const stateShop = useAppSelector((state) => state.shopCartReducer)
@@ -37,11 +37,11 @@ export const ShopCart = () => {
 
   return (<div className={s.shopCart}>
       <button onClick={resetCartHandler}>Reset cart shop</button>
-      <p className={s.totalCostTitle}>TOTAL COST:
+      <p className={s.totalCostTitle}>Total cost:
         <span className={s.totalCost}> {totalItemsCostParse} {totalValue}</span>
       </p>
       <div className={s.shopCartBlock}>
-        {stateShop.map((item: CardType, index) => {
+        {stateShop.map((item: ProductType, index) => {
           return <GoodInShopCart item={item} key={index}/>
         })}
       </div>

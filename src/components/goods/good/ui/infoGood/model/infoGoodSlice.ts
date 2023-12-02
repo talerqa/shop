@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CardType, createAppAsyncThunk} from "../../../model/goodSlice.ts";
-import {productsApi} from "@/components/goods/good/api/api.ts";
+import {createAppAsyncThunk} from "../../../model/goodSlice.ts";
+import {productsApi, ProductType} from "@/components/goods/good/api/api.ts";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected'
 
 const initialState: any = {
-  infoGoods: [] as CardType[],
+  infoGoods: [] as ProductType[],
   status: '' as RequestState,
 }
 export const slice = createSlice({

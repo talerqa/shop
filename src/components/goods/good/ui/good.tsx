@@ -2,10 +2,10 @@ import {memo} from "react";
 import s from './good.module.scss'
 import {NavLink} from "react-router-dom";
 import {AddToCart} from "@/components/goods/good/ui/addToCart/ui";
-import {CardType} from "@/components/goods/good/model";
+import {ProductType} from "@/components/goods/good/api/api.ts";
 
 type Props = {
-  card: CardType
+  card: ProductType
 }
 
 export const Good: React.FC<Props> = memo(props => {
