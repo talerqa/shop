@@ -26,29 +26,33 @@ export const Goods = () => {
         <p className={s.titleInput}>Search product</p>
         <div className={s.inputFind}>
           <input type="search" className={s.input} value={value}
-                    onChange={changeValueHandler}/>
+                 onChange={changeValueHandler}/>
           <button
             className={s.buttonClear}
             onClick={() => {
-            dispatch(setName({title: ''}))
-            dispatch(getGoodByName({title: ''}))
-          }}>clear
+              dispatch(setName({title: ''}))
+              dispatch(getGoodByName({title: ''}))
+            }}>clear
           </button>
         </div>
       </div>
 
       <div className={s.goods}>
-        {status === 'pending' || statusGoods === 'loading' ?
-          <div className={s.goodsPreloader}>
-            < Preloader/>
-          </div>
-          : goodState.map((card, index) => {
-            return <Good card={card} key={index}/>
-          })}
-        {goodState.length === 0 && <div className={s.emptyGood}>Empty</div>}
+
+        {goodState.length > 0 ?
+          status === 'pending' || statusGoods === 'loading' ?
+            <div className={s.goodsPreloader}>
+              < Preloader/>
+            </div>
+            : goodState.map((card, index) => {
+              return <Good card={card} key={index}/>
+            })
+          : <div className={s.emptyGood}>Empty</div>
+        }
       </div>
     </div>
 
-  );
+  )
+    ;
 }
 
